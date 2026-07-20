@@ -5,7 +5,7 @@
   "description": "Meen The Fox — portfolio site",
   "scripts": {
     "setup": "bash scripts/install-hooks.sh && python3 -m pip install -r scripts/requirements.txt",
-    "postinstall": "pnpm run setup",
+    "postinstall": "bash -c 'if [ -z \"${CI:-}\" ]; then pnpm run setup; fi'",
     "media": "bash scripts/prepare-media.sh",
     "media:organize": "python3 scripts/organize-media-names.py",
     "media:rules": "python3 scripts/organize-media-names.py --list-rules",
