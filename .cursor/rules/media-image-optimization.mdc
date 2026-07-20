@@ -1,0 +1,91 @@
+---
+description: รูปใน media/ — ชื่อตามโฟลเดอร์, ≤100KB, บีบอัด/จัดระเบียบอัตโนมัติก่อน push และ R2
+globs: media/**/*,public/index.html,scripts/media*.py,scripts/media*.json,scripts/prepare-media.sh,scripts/compress-images.py,scripts/organize-media-names.py,scripts/verify-media.py
+alwaysApply: false
+---
+
+# Media — กฎรูปภาพ (Meen The Fox)
+
+## เป้าหมาย
+
+- รูปทุกไฟล์ใต้ `media/` **≤ 100 KB**
+- **ชื่อไฟล์เป็นระเบียบตามโฟลเดอร์** (ไม่ให้ผู้ใช้ rename เอง)
+- Gallery ใน `public/index.html` อ้าง path ใต้ `/media/…` ให้ตรงไฟล์จริง
+- ให้บริการจาก **Cloudflare R2** — หลังเปลี่ยนรูปใช้ `pnpm run upload`
+
+```
+ก่อน (ห้าม):
+  media/cars/photo.JPG     10 MB, ชื่อปน BHS/BMW/DSC
+
+หลัง (มาตรฐาน):
+  media/cars/car-00012.jpg   ≤ 100 KB, gallery อัปเดตอัตโนมัติ
+```
+
+## กฎบังคับ
+
+1. **ห้าม** commit รูปดิบหลาย MB / ไม่ผ่าน `pnpm run media:check`
+2. **ห้าม** ตั้งชื่อมือหรือแก้ `public/index.html` ทีละ path เมื่อเพิ่มรูปชุดใหญ่ — ใช้ pipeline
+3. **ห้าม** ใส่ `.DS_Store` ใน `media/` หรืออัปโหลด R2
+4. **ต้อง** ใส่รูปในโฟลเดอร์หมวดที่ถูก (ไม่ปน gallery ข้ามโฟลเดอร์)
+5. **ต้อง** เก็บต้นฉบับความละเอียดสูง **นอก repo** — ใน repo มีแค่ไฟล์ที่ optimize แล้ว
+6. JPEG แบบ progressive, นามสกุล `.jpg` (lowercase); PNG เฉพาะที่จำเป็น (`covers/logo.png`)
+
+## ชื่อไฟล์ตามโฟลเดอร์
+
+| โฟลเดอร์ | รูปแบบหลัง organize | หมายเหตุ |
+|----------|----------------------|----------|
+| `behide/` | `MTF#####-min.jpg` | canonical (MTF + padding) |
+| `cinema/` | `MTF#####.jpg` | canonical |
+| `family/` | `DSC#####.jpg` | canonical |
+| `cars/` | `car-00001.jpg` … | slug อัตโนมัติ |
+| `foods/` | `food-00001.jpg` … | slug |
+| `sports/` | `sport-00001.jpg` … | slug |
+| `portrait/` | `portrait-00001.jpg` … | slug |
+| `covers/` | `cover-00001.jpg` … | slug; **`logo.png` ไม่เปลี่ยนชื่อ** |
+| `events/` | `event-00001.jpg` … | slug |
+
+- Logic: `scripts/media_naming.py` (canonical) → `scripts/media_unify.py` (slug)
+- Mapping ถาวร: `scripts/media-name-map.json` (commit คู่กับ media)
+- รูปใหม่ในโฟลเดอร์ slug ได้เลขถัดไปอัตโนมัติ; gallery paths ถูก rewrite ใน `public/index.html`
+
+## Pipeline อัตโนมัติ
+
+```
+ใส่รูปใน media/<หมวด>/
+        │
+        ▼
+   git push  ──► pre-push: pnpm run media
+        │              ├─ organize (canonical + slug)
+        │              ├─ compress (--replace; ข้ามถ้า ≤100KB แล้ว)
+        │              ├─ verify
+        │              └─ auto-commit ถ้ามี diff
+        ▼
+   (ถ้าต้องการ) pnpm run upload  → R2
+```
+
+ผู้ใช้ทั่วไป: ดู `วิธีใช้.md` — **setup ครั้งเดียว → ใส่รูป → push**
+
+## คำสั่ง (pnpm)
+
+| คำสั่ง | ทำอะไร |
+|--------|--------|
+| `pnpm run media` | ครบ: จัดชื่อ + บีบอัด + ตรวจ |
+| `pnpm run media:organize` | จัดชื่ออย่างเดียว |
+| `pnpm run media:compress` | บีบอัดเฉพาะรูปที่ยังใหญ่เกิน (ไม่ทำซ้ำไฟล์ที่ผ่านแล้ว) |
+| `pnpm run media:check` | ตรวจขนาด (fail ถ้าเกิน 100 KB) |
+| `pnpm run media:rules` | แสดง pattern ทุกโฟลเดอร์ |
+| `pnpm run media:audit` | นับรูปแบบชื่อจริงในแต่ละโฟลเดอร์ |
+
+## Agent checklist — เพิ่ม/เปลี่ยนรูป
+
+- [ ] วางไฟล์ใน `media/<หมวด>/` ที่ถูกต้อง
+- [ ] รัน `pnpm run media` (หรือยืนยัน check ผ่าน)
+- [ ] ตรวจ `public/index.html` ถ้าเพิ่มรายการ gallery ใหม่ (ใส่ `src` ที่ path หลัง organize หรือให้ pipeline rename แล้วแก้ entry ให้ตรง)
+- [ ] ไม่ commit ไฟล์ลับ / `.env`
+- [ ] แจ้งผู้ใช้ว่า push ได้ (ไม่ต้องอธิบายสคริปต์ยาว)
+
+## Agent checklist — แก้สคริปต์/กฎชื่อ
+
+- [ ] อัปเดต `DIRECTORY_PATTERNS` / handlers ใน `media_naming.py` และ `UNIFY_SLUG` ใน `media_unify.py` ให้สอดคล้อง
+- [ ] อัปเดตตารางในไฟล์ rule นี้
+- [ ] รัน `pnpm run media` + `pnpm run media:audit` บน sample

@@ -1,0 +1,33 @@
+#!/bin/bash
+# ก่อน push: จัดระเบียบ + บีบอัดรูป แล้ว commit ให้ถ้ามีการเปลี่ยนแปลง
+set -euo pipefail
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+
+echo ""
+echo "🔍 ตรวจและบีบอัดรูปก่อน push..."
+echo ""
+
+if ! command -v pnpm >/dev/null 2>&1; then
+  echo "❌ ต้องมี pnpm — รัน: corepack enable && pnpm run setup"
+  exit 1
+fi
+
+pnpm run media --silent
+
+if ! git diff --quiet -- media public/index.html 2>/dev/null; then
+  echo ""
+  echo "📦 มีรูปที่ถูกจัดระเบียบ/บีบอัด — commit ให้อัตโนมัติ..."
+  git add media public/index.html scripts/media-name-map.json
+  git commit -m "$(cat <<'EOF'
+chore: organize and compress media for web
+
+EOF
+)"
+fi
+
+pnpm run media:check
+echo ""
+echo "✅ รูปพร้อม push แล้ว"
+echo ""

@@ -1,0 +1,19 @@
+{
+  "name": "meen-the-fox",
+  "private": true,
+  "packageManager": "pnpm@10.34.1",
+  "description": "Meen The Fox — portfolio site",
+  "scripts": {
+    "setup": "bash scripts/install-hooks.sh && python3 -m pip install -r scripts/requirements.txt",
+    "postinstall": "pnpm run setup",
+    "media": "bash scripts/prepare-media.sh",
+    "media:organize": "python3 scripts/organize-media-names.py",
+    "media:rules": "python3 scripts/organize-media-names.py --list-rules",
+    "media:audit": "python3 scripts/organize-media-names.py --audit",
+    "media:compress": "bash scripts/compress-images.sh --replace media",
+    "media:check": "python3 scripts/verify-media.py",
+    "upload": "bash scripts/upload-media.sh",
+    "deploy": "bash scripts/deploy.sh",
+    "push": "git push"
+  }
+}

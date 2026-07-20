@@ -1,0 +1,79 @@
+---
+description: Model selection, Thai plain language for non-developers, subagents, ASCII before/after
+alwaysApply: true
+---
+
+# Workflow, Language & Explanation
+
+## Language
+
+- Always reply in **Thai** (ภาษาไทย). Co-workers nearby understand Thai only.
+- Keep code, commands, file paths, and model slugs in their original form when they must appear (e.g. in diffs or copy-paste steps).
+
+## ภาษาที่ผู้ใช้เข้าใจ (ไม่ใช่นักพัฒนา)
+
+ผู้ใช้และเพื่อนร่วมงานใกล้เคียง **ไม่ใช่คนเขียนโค้ด** — อธิบายให้คนทั่วไปฟังได้ ไม่ใช่ให้ dev อ่าน
+
+- **ห้าม** (หรือเลี่ยงให้มากที่สุด) ศัพท์เทคนิคภาษาอังกฤษ/ไทยที่ผู้ใช้ไม่จำเป็นต้องรู้ เช่น API, endpoint, deploy, refactor, cache, middleware, schema, migration, commit, branch, PR, runtime, stack trace, dependency
+- **ใช้ภาษาชีวิตจริงแทน** — บอกว่า “ทำอะไร” “เห็นอะไร” “ต้องกด/รออะไร” ไม่ใช่ชื่อคอมponent หรือ architecture
+- **ไม่โชว์โครงสร้างโค้ด** ในคำตอบถ้าผู้ใช้ไม่ได้ขอ — สรุปผลลัพธ์และขั้นตอนที่ทำให้ (เช่น “ปรับรูปให้โหลดเร็วขึ้น” แทน “optimize WebP pipeline”)
+- **คำสั่งในเทอร์มินัล** ใส่ได้เมื่อต้องให้รันเอง แต่ตามด้วยคำอธิบายสั้นๆ ว่าคำสั่งนั้นทำอะไรในภาษาคนทั่วไป
+- ASCII **ก่อน/หลัง** ใช้คำไทยหรือชื่อบทบาท (ผู้ใช้ → แอป → ที่เก็บข้อมูล) ไม่ใช้ชื่อ class/function เป็นหลัก
+
+| อย่าใช้ (กับผู้ใช้) | ใช้แทน |
+|---------------------|--------|
+| deploy ขึ้น production | อัปเดตเว็บ/แอปให้คนเข้าใช้ได้จริง |
+| fix bug ใน API | แก้ให้ระบบส่ง/รับข้อมูลถูกต้อง |
+| refactor component | จัดหน้าจอ/ส่วนแสดงผลใหม่ให้ใช้ง่ายขึ้น |
+| run migration | อัปเดตข้อมูลในฐานข้อมูล (ครั้งเดียว) |
+
+## Model Selection
+
+When launching subagents via the Task tool, set `model` explicitly:
+
+| Task type | Model slug | When to use |
+|-----------|------------|-------------|
+| General work (implement, edit, fix, refactor) | `composer-2.5` | Default for coding and routine tasks |
+| Planning / thinking / architecture | `cursor-grok-4.5-medium` | Plans, trade-offs, design decisions |
+| Gather / find data | `claude-4.5-haiku-thinking` | Search codebase, locate files, collect facts |
+
+## Subagents with Grok
+
+- When using `cursor-grok-4.5-medium` for planning or thinking, **always** create at least one Task subagent to help (explore, research, or implement pieces of the plan).
+- Do not plan alone with Grok — delegate supporting work to subagents.
+
+## Explain with ASCII Before / After
+
+Before changing code or files, show a short ASCII example of **ก่อน** and **หลัง**, then explain briefly in Thai.
+
+```
+ก่อน:
+  User -> App -> DB
+         (no cache)
+
+หลัง:
+  User -> App -> Cache -> DB
+              \-> miss
+```
+
+For code edits:
+
+```
+ก่อน:
+  if (x) doA()
+
+หลัง:
+  if (x) {
+    doA()
+    log(x)
+  }
+```
+
+- Prefer small, concrete ASCII diagrams over long prose.
+- Always pair: ก่อน → หลัง → คำอธิบายสั้นๆ
+
+## โปรเจกต์นี้ — รูปและสคริปต์
+
+- รูปและการตั้งชื่อ: อ่านและทำตาม **`media-image-optimization.mdc`** (≤ 100 KB, ชื่อตามโฟลเดอร์, อัตโนมัติ)
+- pnpm, hooks, โครงสร้าง `scripts/`: **`project-automation.mdc`**
+- อธิบายผู้ใช้: ชี้ไป `วิธีใช้.md` — ไม่สอนคำสั่งยาว unless แก้ปัญหา

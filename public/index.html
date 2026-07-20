@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meen The Fox - Creative Photographer & Videographer</title>
+    <meta name="description" content="Creative photographer and videographer specializing in portrait & cinematic photography, automotive excellence, commercial food styling, and capturing life's dynamic moments." />
+    <link rel="icon" type="image/png" href="/static/favicon.png" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Meen The Fox - Creative Photographer & Videographer" />
+    <meta property="og:description" content="Creative photographer and videographer specializing in portrait & cinematic photography, automotive excellence, commercial food styling, and capturing life's dynamic moments." />
+    <meta property="og:image" content="https://meen-the-fox.pages.dev/media/covers/cover-00001.jpg" />
+    <meta property="og:image:alt" content="Meen The Fox Photography Portfolio" />
+    <meta property="og:url" content="https://meen-the-fox.pages.dev" />
+    <meta property="og:site_name" content="Meen The Fox Photography" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Meen The Fox - Creative Photographer & Videographer" />
+    <meta name="twitter:description" content="Creative photographer and videographer specializing in portrait & cinematic photography, automotive excellence, commercial food styling, and capturing life's dynamic moments." />
+    <meta name="twitter:image" content="https://meen-the-fox.pages.dev/media/covers/cover-00001.jpg" />
+    <meta name="twitter:image:alt" content="Meen The Fox Photography Portfolio" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            animation: {
+              "fade-in-up": "fadeInUp 0.8s ease-out forwards",
+              "fade-in-down": "fadeInDown 0.3s ease-out forwards",
+            },
+            keyframes: {
+              fadeInUp: {
+                "0%": { opacity: "0", transform: "translateY(20px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              fadeInDown: {
+                "0%": { opacity: "0", transform: "translateY(-10px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom scrollbar for webkit */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1a1a1a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #eab308;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #fbbf24;
+      }
+    </style>
+  </head>
+  <body class="bg-neutral-950 text-neutral-100 font-sans antialiased">
+    <!-- Navigation -->
+    <nav
+      id="navbar"
+      class="fixed w-full z-50 transition-all duration-300 py-6 bg-transparent text-white"
+    >
+      <div class="container mx-auto px-6 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <img src="/media/covers/logo.png" alt="Meen The Fox" class="h-6" />
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <a href="#portfolio" class="hover:text-yellow-400 transition-colors"
+            >Portfolio</a
+          >
+          <a href="#about" class="hover:text-yellow-400 transition-colors"
+            >About Me</a
+          >
+          <a href="#services" class="hover:text-yellow-400 transition-colors"
+            >Services</a
+          >
+          <a
+            href="#contact"
+            class="px-5 py-2.5 bg-yellow-500 text-neutral-900 rounded-full hover:bg-yellow-400 transition-all transform hover:scale-105 font-bold"
+          >
+            Contact Me
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden text-inherit">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 z-40 bg-neutral-900 pt-24 px-6 hidden transform transition-transform duration-300"
+    >
+      <div class="flex flex-col gap-6 text-2xl font-semibold text-neutral-100">
+        <a href="#portfolio" class="mobile-link">Portfolio</a>
+        <a href="#about" class="mobile-link">About Me</a>
+        <a href="#services" class="mobile-link">Services</a>
+        <a href="#contact" class="mobile-link text-yellow-500">Contact</a>
+      </div>
+      <button
+        id="close-menu-btn"
+        class="absolute top-6 right-6 text-neutral-100"
+      >
+        <i data-lucide="x" class="w-8 h-8"></i>
+      </button>
+    </div>
+
+    <!-- Hero Section -->
+    <header
+      class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden"
+    >
+      <!-- Background Image with Overlay -->
+      <div class="absolute inset-0 z-0">
+        <img
+          src="/media/covers/cover-00003.jpg"
+          alt="Hero Background"
+          class="w-full h-full object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-neutral-950/95 via-neutral-900/60 to-neutral-900/40"
+        ></div>
+      </div>
+
+      <div class="container mx-auto px-6 relative z-10 text-white mt-16">
+        <div class="max-w-3xl animate-fade-in-up">
+          <span
+            class="inline-block py-1 px-3 border border-white/30 rounded-full text-xs font-bold tracking-wider mb-4 uppercase bg-white/10 backdrop-blur-sm"
+          >
+            Creative Photographer
+          </span>
+          <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+            Capturing life,<br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-500"
+              >one frame at a time.</span
+            >
+          </h1>
+          <p
+            class="text-lg md:text-xl text-neutral-300 mb-8 max-w-xl font-light"
+          >
+            Specializing in portrait & cinematic photography, automotive excellence, 
+            commercial food styling, and capturing life's dynamic moments.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="#portfolio"
+              class="px-8 py-4 bg-yellow-500 text-neutral-900 rounded-full font-bold hover:bg-yellow-400 transition-colors flex items-center gap-2"
+            >
+              View Gallery <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </a>
+            <a
+              href="#contact"
+              class="px-8 py-4 bg-transparent border-2 border-yellow-500 text-yellow-500 rounded-full font-bold hover:bg-yellow-500/10 transition-colors"
+            >
+              Contact Me
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-6 container mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+        <div>
+          <h2 class="text-3xl font-bold mb-2 text-yellow-500">Selected Works</h2>
+          <p class="text-neutral-400">A collection of my favorite moments.</p>
+        </div>
+
+        <!-- Categories -->
+        <div class="flex flex-wrap gap-2 mt-6 md:mt-0" id="category-filters">
+          <!-- Buttons injected by JS -->
+        </div>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div
+        id="gallery-grid"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        <!-- Items injected by JS -->
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-neutral-900">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+          <div class="w-full md:w-1/2 relative">
+            <div
+              class="aspect-[3/4] rounded-2xl overflow-hidden bg-neutral-800 relative z-10 group"
+            >
+              <img
+                src="/media/covers/cover-00001.jpg"
+                alt="Meen The Fox - Photographer"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            </div>
+            <!-- Decorative element -->
+            <div
+              class="absolute -bottom-6 -right-6 w-32 h-32 bg-yellow-500/20 rounded-full -z-0"
+            ></div>
+            <div
+              class="absolute -top-6 -left-6 w-24 h-24 border-2 border-yellow-500/30 rounded-full -z-0"
+            ></div>
+          </div>
+
+          <div class="w-full md:w-1/2">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Hi, I'm Meen.</h2>
+            <h3 class="text-xl text-yellow-500 font-medium mb-6">
+              Photographer, Videographer & Visual Creator
+            </h3>
+            <p class="text-neutral-300 mb-6 leading-relaxed">
+              Armed with my camera and a passion for visual storytelling, I capture 
+              both still moments and moving stories. What started as a fascination with 
+              automotive photography has grown into a comprehensive creative journey—from 
+              cinematic portraits and dynamic sports action to compelling video content 
+              that brings stories to life.
+            </p>
+            <p class="text-neutral-300 mb-8 leading-relaxed">
+              Whether I'm shooting stills for editorial work, filming behind-the-scenes 
+              content, or creating cinematic videos for commercial projects, I bring 
+              the same energy and dedication. My dual expertise in photography and 
+              videography allows me to capture your story in multiple dimensions, 
+              delivering both powerful images and engaging motion content.
+            </p>
+
+            <div class="grid grid-cols-2 gap-6 mb-8">
+              <div>
+                <h4 class="font-bold text-2xl text-yellow-500">5+</h4>
+                <p class="text-sm text-neutral-400">Years Experience</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-2xl text-yellow-500">30+</h4>
+                <p class="text-sm text-neutral-400">Projects Completed</p>
+              </div>
+            </div>
+
+            <a
+              href="#contact"
+              class="text-yellow-500 font-bold hover:text-yellow-400 inline-flex items-center gap-2"
+            >
+              Let's work together
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-black text-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold mb-4 text-yellow-500">What I Offer</h2>
+          <p class="text-neutral-400">
+            Creative photography & videography services tailored to your vision.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Service 1 -->
+          <div
+            class="bg-neutral-900 p-8 rounded-2xl hover:bg-neutral-800 transition-colors border border-yellow-500/20 group"
+          >
+            <div
+              class="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="user" class="w-6 h-6 text-neutral-900"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Portrait & Cinematic</h3>
+            <p class="text-neutral-400 leading-relaxed">
+              Creative portraits, headshots, and cinematic photo/video production. 
+              Perfect for personal branding, creative projects, and film work.
+            </p>
+          </div>
+
+          <!-- Service 2 -->
+          <div
+            class="bg-neutral-900 p-8 rounded-2xl hover:bg-neutral-800 transition-colors border border-yellow-500/20 group"
+          >
+            <div
+              class="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="car" class="w-6 h-6 text-neutral-900"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Automotive Photography</h3>
+            <p class="text-neutral-400 leading-relaxed">
+              High-end car photography and videography for enthusiasts, dealerships, 
+              and automotive events. Showcasing vehicles in their best light.
+            </p>
+          </div>
+
+          <!-- Service 3 -->
+          <div
+            class="bg-neutral-900 p-8 rounded-2xl hover:bg-neutral-800 transition-colors border border-yellow-500/20 group"
+          >
+            <div
+              class="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="utensils" class="w-6 h-6 text-neutral-900"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Food & Product</h3>
+            <p class="text-neutral-400 leading-relaxed">
+              Mouth-watering food photography and commercial product shots for 
+              restaurants, menus, and brands. Making your products irresistible.
+            </p>
+          </div>
+
+          <!-- Service 4 -->
+          <div
+            class="bg-neutral-900 p-8 rounded-2xl hover:bg-neutral-800 transition-colors border border-yellow-500/20 group"
+          >
+            <div
+              class="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="heart" class="w-6 h-6 text-neutral-900"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Sports & Lifestyle</h3>
+            <p class="text-neutral-400 leading-relaxed">
+              Dynamic action photography for sports events and candid lifestyle shoots 
+              for families. Capturing movement, emotion, and authentic moments.
+            </p>
+          </div>
+
+          <!-- Service 5 -->
+          <div
+            class="bg-neutral-900 p-8 rounded-2xl hover:bg-neutral-800 transition-colors border border-yellow-500/20 group"
+          >
+            <div
+              class="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="video" class="w-6 h-6 text-neutral-900"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Video Production</h3>
+            <p class="text-neutral-400 leading-relaxed">
+              Complete video services from concept to final cut. Behind-the-scenes 
+              content, commercial videos, and creative storytelling through motion.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer
+      id="contact"
+      class="bg-black text-white py-12 border-t border-yellow-500/20"
+    >
+      <div class="container mx-auto px-6">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12"
+        >
+          <div class="text-center md:text-left">
+            <h2 class="text-2xl font-bold mb-2 text-yellow-500">Ready to shoot?</h2>
+            <p class="text-neutral-400">
+              Contact me to discuss your next project.
+            </p>
+          </div>
+          <div class="flex gap-4">
+            <a
+              href="https://www.instagram.com/aanwaamiin"
+              class="w-10 h-10 bg-neutral-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-neutral-900 transition-colors"
+              aria-label="Instagram"
+              target="_blank"
+            >
+              <i data-lucide="instagram" class="w-5 h-5"></i>
+            </a>
+            <a
+              href="https://www.youtube.com/@meenthefox"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 bg-neutral-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-neutral-900 transition-colors"
+              aria-label="YouTube"
+            >
+              <i data-lucide="youtube" class="w-5 h-5"></i>
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61576846299399"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 bg-neutral-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-neutral-900 transition-colors"
+              aria-label="Facebook"
+            >
+              <i data-lucide="facebook" class="w-5 h-5"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/ameen-mad-a-dam-ba80b31a6/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 bg-neutral-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-neutral-900 transition-colors"
+              aria-label="LinkedIn"
+            >
+              <i data-lucide="linkedin" class="w-5 h-5"></i>
+            </a>
+            <a
+              href="mailto:ameenmhad@gmail.com"
+              class="w-10 h-10 bg-neutral-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-neutral-900 transition-colors"
+              aria-label="Email"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i data-lucide="mail" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-yellow-500/20 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-neutral-500"
+        >
+          <p>&copy; 2024 Meen The Fox Photography. All rights reserved.</p>
+          <div class="flex gap-6 mt-4 md:mt-0">
+            <a href="#" class="hover:text-yellow-500 transition-colors"
+              >Privacy Policy</a
+            >
+            <a href="#" class="hover:text-yellow-500 transition-colors"
+              >Terms of Service</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Image Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-sm">
+      <button
+        id="closeLightbox"
+        class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center bg-neutral-900 hover:bg-yellow-500 text-white hover:text-neutral-900 rounded-full transition-all z-10"
+        aria-label="Close"
+      >
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      
+      <button
+        id="prevImage"
+        class="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-neutral-900 hover:bg-yellow-500 text-white hover:text-neutral-900 rounded-full transition-all z-10"
+        aria-label="Previous"
+      >
+        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+      </button>
+      
+      <button
+        id="nextImage"
+        class="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-neutral-900 hover:bg-yellow-500 text-white hover:text-neutral-900 rounded-full transition-all z-10"
+        aria-label="Next"
+      >
+        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+      </button>
+
+      <div class="w-full h-full flex items-center justify-center p-6">
+        <img
+          id="lightboxImage"
+          src=""
+          alt=""
+          class="max-w-full max-h-full object-contain"
+        />
+      </div>
+      
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
+        <p id="lightboxTitle" class="text-white text-lg font-medium mb-1"></p>
+        <p id="lightboxCounter" class="text-neutral-400 text-sm"></p>
+      </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+      // Initialize Lucide Icons
+      lucide.createIcons();
+
+      // State Management
+      const state = {
+        activeCategory: "Behind the Scenes", // Default category
+        scrolled: false,
+        isMenuOpen: false,
+        lightboxOpen: false,
+        currentImageIndex: 0,
+        currentImages: [],
+      };
+
+      // Data
+      const categories = [
+        "Behind the Scenes",
+        "Automotive",
+        "Food & Commercial",
+        "Portrait & Cinema",
+        "Family",
+        "Sports",
+      ];
+
+      const portfolioItems = [
+        // BEHIND THE SCENES - 32 Images
+        { id: 1, category: "Behind the Scenes", src: "/media/behide/MTF00010-min.jpg", title: "On Set", size: "wide" },
+        { id: 2, category: "Behind the Scenes", src: "/media/behide/MTF00047-min.jpg", title: "Creative Process", size: "standard" },
+        { id: 3, category: "Behind the Scenes", src: "/media/behide/MTF00048-min.jpg", title: "Shoot Preparation", size: "standard" },
+        { id: 4, category: "Behind the Scenes", src: "/media/behide/MTF00056-min.jpg", title: "Behind the Lens", size: "standard" },
+        { id: 5, category: "Behind the Scenes", src: "/media/behide/MTF00159-min.jpg", title: "Production Setup", size: "wide" },
+        { id: 6, category: "Behind the Scenes", src: "/media/behide/MTF00170-min.jpg", title: "Camera Work", size: "standard" },
+        { id: 7, category: "Behind the Scenes", src: "/media/behide/MTF00174-min.jpg", title: "Lighting Setup", size: "standard" },
+        { id: 8, category: "Behind the Scenes", src: "/media/behide/MTF00187-min.jpg", title: "Team Collaboration", size: "standard" },
+        { id: 9, category: "Behind the Scenes", src: "/media/behide/MTF00189-min.jpg", title: "Working Together", size: "wide" },
+        { id: 10, category: "Behind the Scenes", src: "/media/behide/MTF00192-min.jpg", title: "Setting Up Shot", size: "standard" },
+        { id: 11, category: "Behind the Scenes", src: "/media/behide/MTF00207-min.jpg", title: "Production Day", size: "standard" },
+        { id: 12, category: "Behind the Scenes", src: "/media/behide/MTF00223-min.jpg", title: "On Location", size: "standard" },
+        { id: 13, category: "Behind the Scenes", src: "/media/behide/MTF00227-min.jpg", title: "Photographer at Work", size: "standard" },
+        { id: 14, category: "Behind the Scenes", src: "/media/behide/MTF00261-min.jpg", title: "Making Magic", size: "standard" },
+        { id: 15, category: "Behind the Scenes", src: "/media/behide/MTF00266-min.jpg", title: "Studio Session", size: "standard" },
+        { id: 16, category: "Behind the Scenes", src: "/media/behide/MTF00279-min.jpg", title: "Directing the Shot", size: "wide" },
+        { id: 17, category: "Behind the Scenes", src: "/media/behide/MTF00282-min.jpg", title: "In Action", size: "standard" },
+        { id: 18, category: "Behind the Scenes", src: "/media/behide/MTF00321-min.jpg", title: "Creative Vision", size: "standard" },
+        { id: 19, category: "Behind the Scenes", src: "/media/behide/MTF00325-min.jpg", title: "Capturing Moments", size: "standard" },
+        { id: 20, category: "Behind the Scenes", src: "/media/behide/MTF00374-min.jpg", title: "Professional Setup", size: "standard" },
+        { id: 21, category: "Behind the Scenes", src: "/media/behide/MTF00385-min.jpg", title: "Photography Life", size: "standard" },
+        { id: 155, category: "Behind the Scenes", src: "/media/behide/MTF00877-min.jpg", title: "Film Production", size: "wide" },
+        { id: 156, category: "Behind the Scenes", src: "/media/behide/MTF00923-min.jpg", title: "Behind the Camera", size: "standard" },
+        { id: 157, category: "Behind the Scenes", src: "/media/behide/MTF00946-min.jpg", title: "Production Crew", size: "standard" },
+        { id: 158, category: "Behind the Scenes", src: "/media/behide/MTF00970-min.jpg", title: "Set Life", size: "standard" },
+        { id: 159, category: "Behind the Scenes", src: "/media/behide/MTF00974-min.jpg", title: "Filming Day", size: "wide" },
+        { id: 160, category: "Behind the Scenes", src: "/media/behide/MTF00999-min.jpg", title: "Equipment Setup", size: "standard" },
+        { id: 161, category: "Behind the Scenes", src: "/media/behide/MTF01057-min.jpg", title: "Director's View", size: "standard" },
+        { id: 162, category: "Behind the Scenes", src: "/media/behide/MTF01063-min.jpg", title: "Crew at Work", size: "standard" },
+        { id: 163, category: "Behind the Scenes", src: "/media/behide/MTF01069-min.jpg", title: "Technical Setup", size: "standard" },
+        { id: 164, category: "Behind the Scenes", src: "/media/behide/MTF01087-min.jpg", title: "Working Environment", size: "standard" },
+        { id: 165, category: "Behind the Scenes", src: "/media/behide/MTF01281-min.jpg", title: "Photography Session", size: "standard" },
+
+        // AUTOMOTIVE - 30 Images (Optimized layout pattern)
+        { id: 22, category: "Automotive", src: "/media/cars/car-00049.jpg", title: "BMW M2 - The White Beast", size: "wide" },
+        { id: 2, category: "Automotive", src: "/media/cars/car-00050.jpg", title: "M2 Side Profile", size: "standard" },
+        { id: 3, category: "Automotive", src: "/media/cars/car-00035.jpg", title: "Toyota AE86 Trueno", size: "standard" },
+        { id: 4, category: "Automotive", src: "/media/cars/car-00039.jpg", title: "Classic VW Beetle", size: "standard" },
+        { id: 5, category: "Automotive", src: "/media/cars/car-00027.jpg", title: "BMW i4 M50 - Electric Blue", size: "wide" },
+        { id: 6, category: "Automotive", src: "/media/cars/car-00011.jpg", title: "JDM Legends", size: "standard" },
+        { id: 7, category: "Automotive", src: "/media/cars/car-00044.jpg", title: "M2 G87 Collage", size: "standard" },
+        { id: 8, category: "Automotive", src: "/media/cars/car-00032.jpg", title: "i4 M50 Caliper Detail", size: "standard" },
+        { id: 9, category: "Automotive", src: "/media/cars/car-00018.jpg", title: "Track Ready", size: "wide" },
+        { id: 10, category: "Automotive", src: "/media/cars/car-00046.jpg", title: "M Performance Wheels", size: "standard" },
+        { id: 11, category: "Automotive", src: "/media/cars/car-00043.jpg", title: "Night Drive", size: "standard" },
+        { id: 12, category: "Automotive", src: "/media/cars/car-00034.jpg", title: "Porsche 911 Details", size: "standard" },
+        { id: 13, category: "Automotive", src: "/media/cars/car-00006.jpg", title: "Performance Cars", size: "wide" },
+        { id: 14, category: "Automotive", src: "/media/cars/car-00056.jpg", title: "Rolling Shot", size: "standard" },
+        { id: 15, category: "Automotive", src: "/media/cars/car-00022.jpg", title: "Exotic Lineup", size: "standard" },
+        { id: 16, category: "Automotive", src: "/media/cars/car-00036.jpg", title: "BMW Touring Stance", size: "standard" },
+        { id: 17, category: "Automotive", src: "/media/cars/car-00028.jpg", title: "i4 M50 Front", size: "standard" },
+        { id: 18, category: "Automotive", src: "/media/cars/car-00037.jpg", title: "Classic Collection", size: "standard" },
+        { id: 19, category: "Automotive", src: "/media/cars/car-00051.jpg", title: "M2 Detail Shot", size: "standard" },
+        { id: 20, category: "Automotive", src: "/media/cars/car-00001.jpg", title: "Event Atmosphere", size: "wide" },
+        { id: 21, category: "Automotive", src: "/media/cars/car-00029.jpg", title: "i4 M50 Side View", size: "standard" },
+        { id: 22, category: "Automotive", src: "/media/cars/car-00013.jpg", title: "Automotive Art", size: "standard" },
+        { id: 23, category: "Automotive", src: "/media/cars/car-00017.jpg", title: "Detail Perfection", size: "standard" },
+        { id: 24, category: "Automotive", src: "/media/cars/car-00041.jpg", title: "Urban Photography", size: "standard" },
+        { id: 25, category: "Automotive", src: "/media/cars/car-00038.jpg", title: "Cars & Coffee Meet", size: "standard" },
+        { id: 26, category: "Automotive", src: "/media/cars/car-00033.jpg", title: "i4 M50 Wheels", size: "standard" },
+        { id: 27, category: "Automotive", src: "/media/cars/car-00047.jpg", title: "M2 Front Angle", size: "standard" },
+        { id: 28, category: "Automotive", src: "/media/cars/car-00030.jpg", title: "i4 M50 Profile", size: "standard" },
+        { id: 29, category: "Automotive", src: "/media/cars/car-00024.jpg", title: "Modified Masterpiece", size: "standard" },
+        { id: 30, category: "Automotive", src: "/media/cars/car-00052.jpg", title: "M2 Close-up", size: "standard" },
+
+        // FOOD & COMMERCIAL - 27 Images (Optimized layout)
+        { id: 31, category: "Food & Commercial", src: "/media/foods/food-00003.jpg", title: "Fine Dining Excellence", size: "wide" },
+        { id: 32, category: "Food & Commercial", src: "/media/foods/food-00010.jpg", title: "Restaurant Quality", size: "standard" },
+        { id: 33, category: "Food & Commercial", src: "/media/foods/food-00020.jpg", title: "Modern Presentation", size: "standard" },
+        { id: 34, category: "Food & Commercial", src: "/media/foods/food-00007.jpg", title: "Artisan Dish", size: "standard" },
+        { id: 35, category: "Food & Commercial", src: "/media/foods/food-00019.jpg", title: "Traditional Cuisine", size: "wide" },
+        { id: 36, category: "Food & Commercial", src: "/media/foods/food-00015.jpg", title: "Bakery Fresh", size: "standard" },
+        { id: 37, category: "Food & Commercial", src: "/media/foods/food-00011.jpg", title: "Delicious Details", size: "standard" },
+        { id: 38, category: "Food & Commercial", src: "/media/foods/food-00008.jpg", title: "Chef's Special", size: "standard" },
+        { id: 39, category: "Food & Commercial", src: "/media/foods/food-00017.jpg", title: "Cafe Culture", size: "standard" },
+        { id: 40, category: "Food & Commercial", src: "/media/foods/food-00025.jpg", title: "Appetizing Appeal", size: "standard" },
+        { id: 41, category: "Food & Commercial", src: "/media/foods/food-00012.jpg", title: "Comfort Food", size: "standard" },
+        { id: 42, category: "Food & Commercial", src: "/media/foods/food-00002.jpg", title: "Culinary Collection", size: "wide" },
+        { id: 43, category: "Food & Commercial", src: "/media/foods/food-00004.jpg", title: "Gourmet Presentation", size: "standard" },
+        { id: 44, category: "Food & Commercial", src: "/media/foods/food-00005.jpg", title: "Plated Perfection", size: "standard" },
+        { id: 45, category: "Food & Commercial", src: "/media/foods/food-00006.jpg", title: "Fresh Ingredients", size: "standard" },
+        { id: 46, category: "Food & Commercial", src: "/media/foods/food-00021.jpg", title: "Signature Dish", size: "wide" },
+        { id: 47, category: "Food & Commercial", src: "/media/foods/food-00009.jpg", title: "Food Styling", size: "standard" },
+        { id: 48, category: "Food & Commercial", src: "/media/foods/food-00013.jpg", title: "Dessert Dreams", size: "standard" },
+        { id: 49, category: "Food & Commercial", src: "/media/foods/food-00014.jpg", title: "Sweet Treats", size: "standard" },
+        { id: 50, category: "Food & Commercial", src: "/media/foods/food-00016.jpg", title: "Pastry Art", size: "standard" },
+        { id: 51, category: "Food & Commercial", src: "/media/foods/food-00001.jpg", title: "Street Food", size: "standard" },
+        { id: 52, category: "Food & Commercial", src: "/media/foods/food-00018.jpg", title: "Local Flavors", size: "standard" },
+        { id: 53, category: "Food & Commercial", src: "/media/foods/food-00023.jpg", title: "Food Photography", size: "standard" },
+        { id: 54, category: "Food & Commercial", src: "/media/foods/food-00022.jpg", title: "Menu Highlight", size: "standard" },
+        { id: 55, category: "Food & Commercial", src: "/media/foods/food-00024.jpg", title: "Commercial Shoot", size: "standard" },
+        { id: 56, category: "Food & Commercial", src: "/media/foods/food-00026.jpg", title: "Tasty Composition", size: "standard" },
+        { id: 57, category: "Food & Commercial", src: "/media/foods/food-00027.jpg", title: "Mouth-watering", size: "standard" },
+
+        // SPORTS - 16 Images
+        { id: 58, category: "Sports", src: "/media/sports/sport-00007.jpg", title: "Action in Motion", size: "wide" },
+        { id: 59, category: "Sports", src: "/media/sports/sport-00012.jpg", title: "Athletic Moment", size: "standard" },
+        { id: 60, category: "Sports", src: "/media/sports/sport-00004.jpg", title: "Game Day", size: "standard" },
+        { id: 61, category: "Sports", src: "/media/sports/sport-00008.jpg", title: "Competition", size: "standard" },
+        { id: 62, category: "Sports", src: "/media/sports/sport-00003.jpg", title: "Focus & Determination", size: "wide" },
+        { id: 63, category: "Sports", src: "/media/sports/sport-00016.jpg", title: "Victory Moment", size: "standard" },
+        { id: 64, category: "Sports", src: "/media/sports/sport-00011.jpg", title: "Dynamic Action", size: "standard" },
+        { id: 65, category: "Sports", src: "/media/sports/sport-00002.jpg", title: "In the Zone", size: "standard" },
+        { id: 66, category: "Sports", src: "/media/sports/sport-00013.jpg", title: "Victory Celebration", size: "wide" },
+        { id: 67, category: "Sports", src: "/media/sports/sport-00015.jpg", title: "Sporting Excellence", size: "standard" },
+        { id: 68, category: "Sports", src: "/media/sports/sport-00009.jpg", title: "Athletic Performance", size: "standard" },
+        { id: 69, category: "Sports", src: "/media/sports/sport-00010.jpg", title: "Sports Action", size: "standard" },
+        { id: 70, category: "Sports", src: "/media/sports/sport-00006.jpg", title: "Game Moment", size: "standard" },
+        { id: 71, category: "Sports", src: "/media/sports/sport-00005.jpg", title: "Competitive Spirit", size: "standard" },
+        { id: 72, category: "Sports", src: "/media/sports/sport-00001.jpg", title: "Team Spirit", size: "standard" },
+        { id: 73, category: "Sports", src: "/media/sports/sport-00014.jpg", title: "Team Achievement", size: "standard" },
+
+        // FAMILY - 22 Images
+        { id: 74, category: "Family", src: "/media/family/DSC03596.jpg", title: "Family Gathering", size: "wide" },
+        { id: 75, category: "Family", src: "/media/family/DSC03594.jpg", title: "Family Portrait", size: "standard" },
+        { id: 76, category: "Family", src: "/media/family/DSC03588.jpg", title: "Precious Moments", size: "standard" },
+        { id: 77, category: "Family", src: "/media/family/DSC03585.jpg", title: "Together Time", size: "standard" },
+        { id: 78, category: "Family", src: "/media/family/DSC03454.jpg", title: "Together Forever", size: "wide" },
+        { id: 79, category: "Family", src: "/media/family/DSC03579.jpg", title: "Family Joy", size: "standard" },
+        { id: 80, category: "Family", src: "/media/family/DSC03534.jpg", title: "Generations Together", size: "standard" },
+        { id: 81, category: "Family", src: "/media/family/DSC03447.jpg", title: "Family Connection", size: "standard" },
+        { id: 82, category: "Family", src: "/media/family/DSC03186.jpg", title: "Together Always", size: "wide" },
+        { id: 83, category: "Family", src: "/media/family/DSC03430.jpg", title: "Bonding Moments", size: "standard" },
+        { id: 84, category: "Family", src: "/media/family/DSC03359.jpg", title: "Candid Moments", size: "standard" },
+        { id: 85, category: "Family", src: "/media/family/DSC03331.jpg", title: "Family Bonds", size: "standard" },
+        { id: 86, category: "Family", src: "/media/family/DSC03325.jpg", title: "Shared Love", size: "standard" },
+        { id: 87, category: "Family", src: "/media/family/DSC03191.jpg", title: "Family Smiles", size: "standard" },
+        { id: 88, category: "Family", src: "/media/family/DSC03188.jpg", title: "Joyful Connection", size: "standard" },
+        { id: 89, category: "Family", src: "/media/family/DSC03183.jpg", title: "Love & Laughter", size: "standard" },
+        { id: 90, category: "Family", src: "/media/family/DSC03182.jpg", title: "Family Unity", size: "standard" },
+        { id: 91, category: "Family", src: "/media/family/DSC03174.jpg", title: "Memorable Moments", size: "standard" },
+        { id: 92, category: "Family", src: "/media/family/DSC03168.jpg", title: "Making Memories", size: "standard" },
+        { id: 93, category: "Family", src: "/media/family/DSC03166.jpg", title: "Family Love", size: "standard" },
+        { id: 94, category: "Family", src: "/media/family/DSC03164.jpg", title: "Happy Times", size: "standard" },
+        { id: 95, category: "Family", src: "/media/family/DSC03161.jpg", title: "Cherished Moments", size: "standard" },
+
+        // PORTRAIT & CINEMA - 28 Images (Optimized layout)
+        { id: 126, category: "Portrait & Cinema", src: "/media/portrait/portrait-00018.jpg", title: "Portrait Session", size: "wide" },
+        { id: 127, category: "Portrait & Cinema", src: "/media/portrait/portrait-00016.jpg", title: "Natural Light", size: "standard" },
+        { id: 128, category: "Portrait & Cinema", src: "/media/portrait/portrait-00017.jpg", title: "Urban Portrait", size: "standard" },
+        { id: 129, category: "Portrait & Cinema", src: "/media/portrait/portrait-00014.jpg", title: "Studio Portrait", size: "standard" },
+        { id: 130, category: "Portrait & Cinema", src: "/media/portrait/portrait-00015.jpg", title: "Classic Shot", size: "wide" },
+        { id: 131, category: "Portrait & Cinema", src: "/media/portrait/portrait-00013.jpg", title: "Editorial Style", size: "standard" },
+        { id: 132, category: "Portrait & Cinema", src: "/media/portrait/portrait-00011.jpg", title: "Professional Look", size: "standard" },
+        { id: 133, category: "Portrait & Cinema", src: "/media/portrait/portrait-00012.jpg", title: "Candid Portrait", size: "standard" },
+        { id: 134, category: "Portrait & Cinema", src: "/media/portrait/portrait-00010.jpg", title: "Headshot", size: "wide" },
+        { id: 135, category: "Portrait & Cinema", src: "/media/portrait/portrait-00008.jpg", title: "Portrait Lighting", size: "standard" },
+        { id: 136, category: "Portrait & Cinema", src: "/media/portrait/portrait-00009.jpg", title: "Character Study", size: "standard" },
+        { id: 137, category: "Portrait & Cinema", src: "/media/portrait/portrait-00005.jpg", title: "Modern Portrait", size: "standard" },
+        { id: 138, category: "Portrait & Cinema", src: "/media/portrait/portrait-00006.jpg", title: "Artistic Portrait", size: "standard" },
+        { id: 139, category: "Portrait & Cinema", src: "/media/portrait/portrait-00007.jpg", title: "Minimal Style", size: "standard" },
+        { id: 140, category: "Portrait & Cinema", src: "/media/portrait/portrait-00003.jpg", title: "Creative Portrait", size: "standard" },
+        { id: 141, category: "Portrait & Cinema", src: "/media/portrait/portrait-00004.jpg", title: "Fashion Portrait", size: "wide" },
+        { id: 142, category: "Portrait & Cinema", src: "/media/portrait/portrait-00001.jpg", title: "Outdoor Session", size: "standard" },
+        { id: 143, category: "Portrait & Cinema", src: "/media/portrait/portrait-00002.jpg", title: "Natural Beauty", size: "standard" },
+
+        { id: 146, category: "Portrait & Cinema", src: "/media/cinema/MTF00076.jpg", title: "Cinematic Frame", size: "wide" },
+        { id: 147, category: "Portrait & Cinema", src: "/media/cinema/MTF00058.jpg", title: "Film Production", size: "standard" },
+        { id: 148, category: "Portrait & Cinema", src: "/media/cinema/MTF00071.jpg", title: "Movie Scene", size: "standard" },
+        { id: 149, category: "Portrait & Cinema", src: "/media/cinema/MTF00035.jpg", title: "Cinematography", size: "standard" },
+        { id: 150, category: "Portrait & Cinema", src: "/media/cinema/MTF00054.jpg", title: "Film Set", size: "wide" },
+        { id: 151, category: "Portrait & Cinema", src: "/media/cinema/MTF00027.jpg", title: "Movie Magic", size: "standard" },
+        { id: 152, category: "Portrait & Cinema", src: "/media/cinema/MTF00008.jpg", title: "Cinema Art", size: "standard" },
+        { id: 153, category: "Portrait & Cinema", src: "/media/cinema/MTF00011.jpg", title: "Visual Storytelling", size: "standard" },
+        { id: 154, category: "Portrait & Cinema", src: "/media/cinema/MTF00015.jpg", title: "Film Work", size: "standard" },
+      ];
+
+      // DOM Elements
+      const navbar = document.getElementById("navbar");
+      const menuBtn = document.getElementById("menu-btn");
+      const closeMenuBtn = document.getElementById("close-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
+      const categoryContainer = document.getElementById("category-filters");
+      const galleryGrid = document.getElementById("gallery-grid");
+
+      // --- Functions ---
+
+      // Render Category Buttons
+      function renderCategories() {
+        categoryContainer.innerHTML = categories
+          .map((cat) => {
+            const isActive = state.activeCategory === cat;
+            const activeClass =
+              "bg-yellow-500 text-neutral-900 shadow-lg border-yellow-500 font-bold";
+            const inactiveClass =
+              "bg-neutral-800 text-neutral-300 hover:bg-neutral-700 border-neutral-700";
+
+            return `
+                    <button 
+                        onclick="setCategory('${cat}')"
+                        class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
+                          isActive ? activeClass : inactiveClass
+                        }"
+                    >
+                        ${cat}
+                    </button>
+                `;
+          })
+          .join("");
+      }
+
+      // Render Gallery Items
+      function renderGallery() {
+        const filteredItems = portfolioItems.filter(
+          (item) => item.category === state.activeCategory
+        );
+
+        if (filteredItems.length === 0) {
+          galleryGrid.innerHTML = `
+                    <div class="col-span-full text-center py-20 text-neutral-500">
+                        <p>No images found in this category.</p>
+                    </div>
+                `;
+          return;
+        }
+
+        state.currentImages = filteredItems;
+        
+        galleryGrid.innerHTML = filteredItems
+          .map((item, index) => {
+            // Determine classes for grid sizing
+            let gridClasses = "";
+            if (item.size === "wide") gridClasses += "md:col-span-2 ";
+            if (item.size === "tall") gridClasses += "row-span-2 aspect-[3/4] ";
+            if (!gridClasses) gridClasses = "aspect-[4/3] ";
+
+            return `
+                    <div class="group relative overflow-hidden rounded-2xl cursor-pointer bg-neutral-800 ${gridClasses} animate-fade-in-up" onclick="openLightbox(${index})">
+                        <img 
+                            src="${item.src}" 
+                            alt="${item.title}" 
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            loading="lazy"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-yellow-400 text-xs font-bold uppercase tracking-wider mb-1">${item.category}</span>
+                            <h3 class="text-white text-xl font-bold">${item.title}</h3>
+                        </div>
+                    </div>
+                `;
+          })
+          .join("");
+      }
+
+      // Set Category Action
+      window.setCategory = (category) => {
+        state.activeCategory = category;
+        renderCategories();
+        renderGallery();
+      };
+
+      // Lightbox Elements
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImage = document.getElementById("lightboxImage");
+      const lightboxTitle = document.getElementById("lightboxTitle");
+      const lightboxCounter = document.getElementById("lightboxCounter");
+      const closeLightboxBtn = document.getElementById("closeLightbox");
+      const prevImageBtn = document.getElementById("prevImage");
+      const nextImageBtn = document.getElementById("nextImage");
+
+      // Lightbox Functions
+      window.openLightbox = function(index) {
+        state.currentImageIndex = index;
+        state.lightboxOpen = true;
+        updateLightboxImage();
+        lightbox.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+        lucide.createIcons(); // Re-initialize icons in lightbox
+      }
+
+      function closeLightbox() {
+        state.lightboxOpen = false;
+        lightbox.classList.add("hidden");
+        document.body.style.overflow = "";
+      }
+
+      function nextImage() {
+        state.currentImageIndex = (state.currentImageIndex + 1) % state.currentImages.length;
+        updateLightboxImage();
+      }
+
+      function prevImage() {
+        state.currentImageIndex = (state.currentImageIndex - 1 + state.currentImages.length) % state.currentImages.length;
+        updateLightboxImage();
+      }
+
+      function updateLightboxImage() {
+        const currentImage = state.currentImages[state.currentImageIndex];
+        lightboxImage.src = currentImage.src;
+        lightboxImage.alt = currentImage.title;
+        lightboxTitle.textContent = currentImage.title;
+        lightboxCounter.textContent = `${state.currentImageIndex + 1} / ${state.currentImages.length}`;
+      }
+
+      // Scroll Handler
+      function handleScroll() {
+        const isScrolled = window.scrollY > 50;
+        if (isScrolled !== state.scrolled) {
+          state.scrolled = isScrolled;
+          if (isScrolled) {
+            navbar.classList.remove("bg-transparent", "py-6");
+            navbar.classList.add(
+              "bg-neutral-900/95",
+              "backdrop-blur-md",
+              "shadow-lg",
+              "py-4",
+              "border-b",
+              "border-yellow-500/20"
+            );
+          } else {
+            navbar.classList.add("bg-transparent", "py-6");
+            navbar.classList.remove(
+              "bg-neutral-900/95",
+              "backdrop-blur-md",
+              "shadow-lg",
+              "py-4",
+              "border-b",
+              "border-yellow-500/20"
+            );
+          }
+        }
+      }
+
+      // Mobile Menu Toggles
+      function toggleMenu() {
+        state.isMenuOpen = !state.isMenuOpen;
+        if (state.isMenuOpen) {
+          mobileMenu.classList.remove("hidden");
+          document.body.style.overflow = "hidden"; // Prevent scrolling
+        } else {
+          mobileMenu.classList.add("hidden");
+          document.body.style.overflow = "";
+        }
+      }
+
+      // --- Event Listeners ---
+
+      window.addEventListener("scroll", handleScroll);
+      menuBtn.addEventListener("click", toggleMenu);
+      closeMenuBtn.addEventListener("click", toggleMenu);
+
+      // Close menu when clicking a link
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (state.isMenuOpen) toggleMenu();
+        });
+      });
+
+      // Lightbox Event Listeners
+      closeLightboxBtn.addEventListener("click", closeLightbox);
+      prevImageBtn.addEventListener("click", prevImage);
+      nextImageBtn.addEventListener("click", nextImage);
+      
+      // Close lightbox when clicking outside the image
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      // Keyboard navigation for lightbox
+      document.addEventListener("keydown", (e) => {
+        if (state.lightboxOpen) {
+          if (e.key === "Escape") closeLightbox();
+          if (e.key === "ArrowRight") nextImage();
+          if (e.key === "ArrowLeft") prevImage();
+        }
+      });
+
+      // --- Initialization ---
+      renderCategories();
+      renderGallery();
+      handleScroll(); // Check initial scroll position
+    </script>
+  </body>
+</html>
+

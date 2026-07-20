@@ -1,0 +1,53 @@
+---
+description: pnpm, scripts/, git hooks, and non-developer workflow for this repo
+alwaysApply: true
+---
+
+# โปรเจกต์ — เครื่องมือ & workflow อัตโนมัติ
+
+## Package manager
+
+- ใช้ **pnpm เท่านั้น** (`packageManager` ใน `package.json`) — ไม่ใช้ `npm` / `yarn` ในสคริปต์หรือเอกสารใหม่
+- หลัง clone: `pnpm run setup` (ติด hook + Pillow)
+
+## โครงสร้างสคริปต์
+
+```
+scripts/
+  prepare-media.sh      ← pipeline หลัก (organize → compress → verify)
+  organize-media-names.py
+  media_unify.py          ← slug ต่อโฟลเดอร์ (car-00001.jpg)
+  media_naming.py         ← กฎชื่อ canonical + audit
+  media-name-map.json     ← mapping ชื่อเดิม → slug (commit คู่กับ media)
+  compress-images.py
+  verify-media.py
+  hooks/pre-push          ← รัน pnpm run media ก่อน push + auto-commit
+  upload-media.sh / deploy.sh
+```
+
+สคริปต์ที่ root (`upload-media.sh`, `deploy.sh`) เป็นแค่ตัวชี้ไป `scripts/` — อย่า duplicate logic ที่ root
+
+## ผู้ใช้ไม่ใช่นักพัฒนา
+
+- คู่มือสั้น: `วิธีใช้.md` (ใส่รูป → `git push`)
+- อย่าให้ผู้ใช้จัดชื่อไฟล์หรือบีบอัดเอง — ใช้ `pnpm run media` หรือปล่อยให้ pre-push ทำ
+- อธิบายผลลัพธ์เป็นภาษาไทยง่ายๆ (ดู `workflow-and-communication.mdc`)
+
+## Agent — เมื่อแก้ระบบรูป
+
+1. แก้ logic ใน `scripts/` — อย่าแยกสคริpt ใหม่ที่ root โดยไม่จำเป็น
+2. เปลี่ยนกฎชื่อ → อัปเดต `media_naming.py`, `media_unify.py`, และ `.cursor/rules/media-image-optimization.mdc`
+3. หลังแก้ pipeline รัน `pnpm run media` และยืนยัน `pnpm run media:check`
+4. pre-push ต้อง `git add` ทั้ง `media/`, `public/index.html`, `scripts/media-name-map.json`
+
+## คำสั่ง pnpm (อ้างอิง)
+
+| คำสั่ง | ใช้เมื่อ |
+|--------|----------|
+| `pnpm run setup` | ครั้งแรก / หลัง clone |
+| `pnpm run media` | จัดชื่อ + บีบอัด + ตรวจ (≤ 100 KB) |
+| `pnpm run media:rules` | แสดง pattern ชื่อต่อโฟลเดอร์ |
+| `pnpm run media:audit` | สรุปรูปแบบชื่อในแต่ละโฟลเดอร์ |
+| `pnpm run upload` | อัปโหลด R2 (มี media:check ก่อน) |
+| `pnpm run deploy` | Cloudflare Pages |
+| `pnpm run push` | เท่ากับ `git push` (hook ทำ media ให้) |
