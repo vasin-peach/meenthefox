@@ -15,7 +15,7 @@ else
   echo "ℹ️  ไม่มีไฟล์รูป/เว็บใหม่ที่ต้องบันทึกเพิ่ม"
 fi
 
-pnpm run media:check -- --quiet 2>/dev/null || pnpm run media:check
+python3 "$ROOT/scripts/verify-media.py" --quiet 2>/dev/null || python3 "$ROOT/scripts/verify-media.py"
 
 echo ""
 echo "↗️  กำลังส่งขึ้น GitHub..."

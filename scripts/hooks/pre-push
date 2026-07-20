@@ -6,7 +6,7 @@ ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
 media_check() {
-  pnpm run media:check -- --quiet 2>/dev/null || pnpm run media:check
+  python3 "$ROOT/scripts/verify-media.py" --quiet 2>/dev/null || python3 "$ROOT/scripts/verify-media.py"
 }
 
 # รอบ push ภายใน (หลัง commit แล้ว) — แค่ตรวจขนาดรูป ไม่รัน pipeline ซ้ำ

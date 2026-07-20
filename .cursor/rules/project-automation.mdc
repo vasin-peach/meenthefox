@@ -22,7 +22,9 @@ scripts/
   compress-images.py
   verify-media.py
   sync-public-media.sh    ← คัดลอก media/ → public/media/
-  hooks/pre-push          ← รัน pnpm run media ก่อน push + auto-commit
+  media-push-prepare.sh   ← จัดรูป + เลือก commit ก่อน push
+  git-push.sh             ← push ครบในรอบเดียว (pnpm run push)
+  hooks/pre-push          ← git push: prepare + ส่ง commit ใน hook
 ```
 
 สคริปต์ที่ root (`rename-files.sh` ฯลฯ) เป็นแค่ตัวชี้ไป `scripts/` — อย่า duplicate logic ที่ root
@@ -38,7 +40,7 @@ scripts/
 1. แก้ logic ใน `scripts/` — อย่าแยกสคริpt ใหม่ที่ root โดยไม่จำเป็น
 2. เปลี่ยนกฎชื่อ → อัปเดต `media_naming.py`, `media_unify.py`, และ `.cursor/rules/media-image-optimization.mdc`
 3. หลังแก้ pipeline รัน `pnpm run media` และยืนยัน `pnpm run media:check`
-4. pre-push ต้อง `git add` ทั้ง `media/`, `public/index.html`, `scripts/media-name-map.json`
+4. pre-push เลือก commit ไฟล์ที่เปลี่ยนใน `media/`, `public/index.html`, `scripts/`, `package.json`, `netlify.toml`, `วิธีใช้.md` (ไม่รวม `.cursor/`) แล้ว push ในรอบเดียว
 
 ## คำสั่ง pnpm (อ้างอิง)
 
@@ -48,6 +50,6 @@ scripts/
 | `pnpm run media` | จัดชื่อ + บีบอัด + ตรวจ (≤ 100 KB) |
 | `pnpm run media:rules` | แสดง pattern ชื่อต่อโฟลเดอร์ |
 | `pnpm run media:audit` | สรุปรูปแบบชื่อในแต่ละโฟลเดอร์ |
-| `pnpm run push` | เท่ากับ `git push` (hook ทำ media ให้) |
+| `pnpm run push` | จัดรูป + บันทึก + ส่ง GitHub ครบในรอบเดียว (แนะนำ) |
 
 โฮสต์เว็บ: ต่อ **Netlify กับ GitHub** (ดู `netlify.toml`, `วิธีใช้.md`) — ไม่มีสคริปต์ deploy ใน repo

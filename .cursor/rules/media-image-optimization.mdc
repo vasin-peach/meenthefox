@@ -8,7 +8,7 @@ alwaysApply: false
 
 ## เป้าหมาย
 
-- รูปทุกไฟล์ใต้ `media/` **≤ 100 KB**
+- รูปทุกไฟล์ใต้ `media/` **≤ 100 KB** (ยกเว้น `media/covers/` **≤ 500 KB** — ปก/hero)
 - **ชื่อไฟล์เป็นระเบียบตามโฟลเดอร์** (ไม่ให้ผู้ใช้ rename เอง)
 - Gallery ใน `public/index.html` อ้าง path ใต้ `/media/…` ให้ตรงไฟล์จริง
 - โฮสต์ผ่าน **Netlify + GitHub** — รูปใน repo ถูกคัดลอกไป `public/media/` ตอน `pnpm run media` และตอน build บน Netlify
@@ -41,7 +41,7 @@ alwaysApply: false
 | `foods/` | `food-00001.jpg` … | slug |
 | `sports/` | `sport-00001.jpg` … | slug |
 | `portrait/` | `portrait-00001.jpg` … | slug |
-| `covers/` | `cover-00001.jpg` … | slug; **`logo.png` ไม่เปลี่ยนชื่อ** |
+| `covers/` | `cover-00001.jpg` … | slug; **`logo.png` ไม่เปลี่ยนชื่อ**; **≤ 500 KB** |
 | `events/` | `event-00001.jpg` … | slug |
 
 - Logic: `scripts/media_naming.py` (canonical) → `scripts/media_unify.py` (slug)
@@ -56,7 +56,7 @@ alwaysApply: false
         ▼
    git push  ──► pre-push: pnpm run media
         │              ├─ organize (canonical + slug)
-        │              ├─ compress (--replace; ข้ามถ้า ≤100KB แล้ว)
+        │              ├─ compress (--replace; ข้ามถ้าผ่านเพดานแล้ว — covers ≤500 KB, อื่น ≤100 KB)
         │              ├─ verify
         │              ├─ sync → public/media/ (สำหรับโฮสต์ static)
         │              └─ auto-commit ถ้ามี diff
@@ -73,7 +73,7 @@ alwaysApply: false
 | `pnpm run media` | ครบ: จัดชื่อ + บีบอัด + ตรวจ |
 | `pnpm run media:organize` | จัดชื่ออย่างเดียว |
 | `pnpm run media:compress` | บีบอัดเฉพาะรูปที่ยังใหญ่เกิน (ไม่ทำซ้ำไฟล์ที่ผ่านแล้ว) |
-| `pnpm run media:check` | ตรวจขนาด (fail ถ้าเกิน 100 KB) |
+| `pnpm run media:check` | ตรวจขนาด (fail ถ้าเกินเพดาน — covers 500 KB, อื่น 100 KB) |
 | `pnpm run media:rules` | แสดง pattern ทุกโฟลเดอร์ |
 | `pnpm run media:audit` | นับรูปแบบชื่อจริงในแต่ละโฟลเดอร์ |
 
