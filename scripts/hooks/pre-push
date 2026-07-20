@@ -1,33 +1,50 @@
 #!/bin/bash
-# ก่อน push: จัดระเบียบ + บีบอัดรูป แล้ว commit ให้ถ้ามีการเปลี่ยนแปลง
+# ก่อน push: จัดรูป → commit → ส่ง commit นั้นในรอบเดียว (Git ไม่รวม commit ที่สร้างใน hook ใน push รอบแรก)
 set -euo pipefail
 
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
+media_check() {
+  pnpm run media:check -- --quiet 2>/dev/null || pnpm run media:check
+}
+
+# รอบ push ภายใน (หลัง commit แล้ว) — แค่ตรวจขนาดรูป ไม่รัน pipeline ซ้ำ
+if [[ -n "${MEEN_PRE_PUSH_INNER:-}" ]]; then
+  media_check
+  echo ""
+  echo "✅ ส่งขึ้น GitHub แล้ว"
+  echo ""
+  exit 0
+fi
+
 echo ""
 echo "🔍 ตรวจและบีบอัดรูปก่อน push..."
 echo ""
 
-if ! command -v pnpm >/dev/null 2>&1; then
-  echo "❌ ต้องมี pnpm — รัน: corepack enable && pnpm run setup"
-  exit 1
-fi
-
-pnpm run media --silent
-
-if ! git diff --quiet -- media public/index.html 2>/dev/null; then
+if bash "$ROOT/scripts/media-push-prepare.sh"; then
   echo ""
-  echo "📦 มีรูปที่ถูกจัดระเบียบ/บีบอัด — commit ให้อัตโนมัติ..."
-  git add media public/index.html scripts/media-name-map.json
-  git commit -m "$(cat <<'EOF'
-chore: organize and compress media for web
-
-EOF
-)"
+  echo "↗️  กำลังส่งขึ้น GitHub..."
+  MEEN_PRE_PUSH_INNER=1 git push --no-verify "$@"
+  echo ""
+  echo "✅ ส่งขึ้น GitHub แล้ว"
+  echo ""
+  exit 0
 fi
 
-pnpm run media:check
+media_check
+
+remaining="$(git status --porcelain)"
+if [[ -n "$remaining" ]]; then
+  echo ""
+  echo "ℹ️  ยังมีไฟล์ที่แก้ในเครื่องแต่ไม่ได้บันทึกอัตโนมัติ (ไม่เกี่ยวกับรูป/เว็บ):"
+  echo "$remaining" | while IFS= read -r line; do
+    [ -z "$line" ] && continue
+    echo "   • ${line:3}"
+  done
+  echo ""
+fi
+
 echo ""
-echo "✅ รูปพร้อม push แล้ว"
+echo "✅ ไม่มีรูปหรือไฟล์เว็บใหม่ที่ต้องบันทึก — ถ้า Git บอก up-to-date แปลว่าบน GitHub ตรงกับที่บันทึกล่าสุดแล้ว"
 echo ""

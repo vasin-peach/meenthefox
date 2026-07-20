@@ -10,7 +10,7 @@ from pathlib import Path
 
 from PIL import Image, ImageOps
 
-from media_config import IMAGE_EXTENSIONS, MAX_KB, MEDIA_DIR
+from media_config import IMAGE_EXTENSIONS, MAX_KB, MEDIA_DIR, max_bytes_for_media_path
 
 MIN_QUALITY = 20
 MAX_QUALITY = 92
@@ -263,14 +263,21 @@ def main() -> int:
         print("No images found.", file=sys.stderr)
         return 1
 
-    print(f"🖼️  บีบอัด {len(images)} รูป — เป้าหมาย ≤ {args.max_kb} KB\n")
+    default_max = args.max_kb
+    print(f"🖼️  บีบอัด {len(images)} รูป — default ≤ {default_max} KB (บางโฟลเดอร์มีเพดานต่างกัน)\n")
 
     ok_count = 0
     fail_count = 0
     for src in images:
+        try:
+            src.resolve().relative_to(MEDIA_DIR.resolve())
+            file_max_bytes = max_bytes_for_media_path(src)
+        except ValueError:
+            file_max_bytes = max_bytes
+
         if process_file(
             src,
-            max_bytes,
+            file_max_bytes,
             args.max_width,
             args.suffix,
             args.replace,
