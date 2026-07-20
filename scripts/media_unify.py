@@ -113,10 +113,11 @@ def apply_path_rewrites(renames: list[tuple[Path, Path]]) -> None:
         old_ref = f"/media/{src.relative_to(MEDIA_DIR).as_posix()}"
         new_ref = f"/media/{dest.relative_to(MEDIA_DIR).as_posix()}"
         text = text.replace(old_ref, new_ref)
-        # Full URL in meta tags
-        text = text.replace(
-            f"meen-the-fox.pages.dev{old_ref}",
-            f"meen-the-fox.pages.dev{new_ref}",
+        # Full URL in meta tags (any host)
+        text = re.sub(
+            rf"(https://[^/]+){re.escape(old_ref)}",
+            rf"\1{new_ref}",
+            text,
         )
     if text != original:
         INDEX_HTML.write_text(text, encoding="utf-8")

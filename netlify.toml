@@ -1,0 +1,4 @@
+# ต่อ repo นี้กับ Netlify + GitHub แล้วใช้ค่าเหล่านี้ (หรือตั้งใน UI ให้ตรงกัน)
+[build]
+  publish = "public"
+  command = "bash scripts/sync-public-media.sh"

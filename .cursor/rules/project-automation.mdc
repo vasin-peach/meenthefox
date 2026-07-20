@@ -21,11 +21,11 @@ scripts/
   media-name-map.json     ← mapping ชื่อเดิม → slug (commit คู่กับ media)
   compress-images.py
   verify-media.py
+  sync-public-media.sh    ← คัดลอก media/ → public/media/
   hooks/pre-push          ← รัน pnpm run media ก่อน push + auto-commit
-  upload-media.sh / deploy.sh
 ```
 
-สคริปต์ที่ root (`upload-media.sh`, `deploy.sh`) เป็นแค่ตัวชี้ไป `scripts/` — อย่า duplicate logic ที่ root
+สคริปต์ที่ root (`rename-files.sh` ฯลฯ) เป็นแค่ตัวชี้ไป `scripts/` — อย่า duplicate logic ที่ root
 
 ## ผู้ใช้ไม่ใช่นักพัฒนา
 
@@ -48,6 +48,6 @@ scripts/
 | `pnpm run media` | จัดชื่อ + บีบอัด + ตรวจ (≤ 100 KB) |
 | `pnpm run media:rules` | แสดง pattern ชื่อต่อโฟลเดอร์ |
 | `pnpm run media:audit` | สรุปรูปแบบชื่อในแต่ละโฟลเดอร์ |
-| `pnpm run upload` | อัปโหลด R2 (มี media:check ก่อน) |
-| `pnpm run deploy` | Cloudflare Pages |
 | `pnpm run push` | เท่ากับ `git push` (hook ทำ media ให้) |
+
+โฮสต์เว็บ: ต่อ **Netlify กับ GitHub** (ดู `netlify.toml`, `วิธีใช้.md`) — ไม่มีสคริปต์ deploy ใน repo

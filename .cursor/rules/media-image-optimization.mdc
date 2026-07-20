@@ -1,5 +1,5 @@
 ---
-description: รูปใน media/ — ชื่อตามโฟลเดอร์, ≤100KB, บีบอัด/จัดระเบียบอัตโนมัติก่อน push และ R2
+description: รูปใน media/ — ชื่อตามโฟลเดอร์, ≤100KB, บีบอัด/จัดระเบียบอัตโนมัติก่อน push
 globs: media/**/*,public/index.html,scripts/media*.py,scripts/media*.json,scripts/prepare-media.sh,scripts/compress-images.py,scripts/organize-media-names.py,scripts/verify-media.py
 alwaysApply: false
 ---
@@ -11,7 +11,7 @@ alwaysApply: false
 - รูปทุกไฟล์ใต้ `media/` **≤ 100 KB**
 - **ชื่อไฟล์เป็นระเบียบตามโฟลเดอร์** (ไม่ให้ผู้ใช้ rename เอง)
 - Gallery ใน `public/index.html` อ้าง path ใต้ `/media/…` ให้ตรงไฟล์จริง
-- ให้บริการจาก **Cloudflare R2** — หลังเปลี่ยนรูปใช้ `pnpm run upload`
+- โฮสต์ผ่าน **Netlify + GitHub** — รูปใน repo ถูกคัดลอกไป `public/media/` ตอน `pnpm run media` และตอน build บน Netlify
 
 ```
 ก่อน (ห้าม):
@@ -25,7 +25,7 @@ alwaysApply: false
 
 1. **ห้าม** commit รูปดิบหลาย MB / ไม่ผ่าน `pnpm run media:check`
 2. **ห้าม** ตั้งชื่อมือหรือแก้ `public/index.html` ทีละ path เมื่อเพิ่มรูปชุดใหญ่ — ใช้ pipeline
-3. **ห้าม** ใส่ `.DS_Store` ใน `media/` หรืออัปโหลด R2
+3. **ห้าม** ใส่ `.DS_Store` ใน `media/`
 4. **ต้อง** ใส่รูปในโฟลเดอร์หมวดที่ถูก (ไม่ปน gallery ข้ามโฟลเดอร์)
 5. **ต้อง** เก็บต้นฉบับความละเอียดสูง **นอก repo** — ใน repo มีแค่ไฟล์ที่ optimize แล้ว
 6. JPEG แบบ progressive, นามสกุล `.jpg` (lowercase); PNG เฉพาะที่จำเป็น (`covers/logo.png`)
@@ -58,9 +58,10 @@ alwaysApply: false
         │              ├─ organize (canonical + slug)
         │              ├─ compress (--replace; ข้ามถ้า ≤100KB แล้ว)
         │              ├─ verify
+        │              ├─ sync → public/media/ (สำหรับโฮสต์ static)
         │              └─ auto-commit ถ้ามี diff
         ▼
-   (ถ้าต้องการ) pnpm run upload  → R2
+   GitHub → Netlify อัปเดตเว็บอัตโนมัติ
 ```
 
 ผู้ใช้ทั่วไป: ดู `วิธีใช้.md` — **setup ครั้งเดียว → ใส่รูป → push**
