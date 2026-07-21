@@ -21,6 +21,7 @@ UNIFY_SLUG: dict[str, str] = {
     "portrait": "portrait",
     "covers": "cover",
     "events": "event",
+    "works": "work",
 }
 
 EXEMPT_NAMES = {"logo.png", ".DS_Store"}

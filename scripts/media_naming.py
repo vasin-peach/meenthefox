@@ -20,6 +20,7 @@ DIRECTORY_PATTERNS: dict[str, str] = {
     "events": "event-#####.jpg",
     "covers": "logo.png | cover-#####.jpg",
     "cars": "car-#####.jpg",
+    "works": "work-#####.jpg",
 }
 
 

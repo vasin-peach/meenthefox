@@ -11,8 +11,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Meen The Fox - Creative Photographer & Videographer" />
     <meta property="og:description" content="Creative photographer and videographer specializing in portrait & cinematic photography, automotive excellence, commercial food styling, and capturing life's dynamic moments." />
-    <meta property="og:image" content="https://meen-the-fox.pages.dev/media/covers/cover-00001.jpg" />
-    <meta property="og:image:alt" content="Meen The Fox Photography Portfolio" />
+    <meta property="og:image" content="https://meen-the-fox.pages.dev/media/covers/og.jpg" />
+    <meta property="og:image:alt" content="Meen The Fox Photography" />
     <meta property="og:url" content="https://meen-the-fox.pages.dev" />
     <meta property="og:site_name" content="Meen The Fox Photography" />
     
@@ -20,8 +20,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Meen The Fox - Creative Photographer & Videographer" />
     <meta name="twitter:description" content="Creative photographer and videographer specializing in portrait & cinematic photography, automotive excellence, commercial food styling, and capturing life's dynamic moments." />
-    <meta name="twitter:image" content="https://meen-the-fox.pages.dev/media/covers/cover-00001.jpg" />
-    <meta name="twitter:image:alt" content="Meen The Fox Photography Portfolio" />
+    <meta name="twitter:image" content="https://meen-the-fox.pages.dev/media/covers/og.jpg" />
+    <meta name="twitter:image:alt" content="Meen The Fox Photography" />
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -72,6 +72,251 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #fbbf24;
       }
+
+      .works-dotted-bg {
+        background-color: #0a0a0a;
+        background-image: radial-gradient(
+          circle,
+          rgba(234, 179, 8, 0.12) 1px,
+          transparent 1px
+        );
+        background-size: 22px 22px;
+      }
+
+      .stack-card {
+        position: relative;
+        padding: 0 10px 10px 0;
+        cursor: pointer;
+        border: none;
+        background: none;
+        text-align: left;
+        width: 100%;
+      }
+
+      .stack-card::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 0;
+        bottom: 0;
+        border: 1px solid rgba(234, 179, 8, 0.22);
+        background: #171717;
+        z-index: 0;
+        transition: border-color 0.3s;
+      }
+
+      .stack-card:hover::before {
+        border-color: rgba(234, 179, 8, 0.45);
+      }
+
+      .stack-card-front {
+        position: relative;
+        z-index: 1;
+        aspect-ratio: 16 / 10;
+        border: 1px solid rgba(234, 179, 8, 0.35);
+        overflow: hidden;
+        background: #262626;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+
+      .stack-card:hover .stack-card-front {
+        transform: translateY(-4px);
+        border-color: rgba(234, 179, 8, 0.75);
+      }
+
+      .stack-card-front img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .stack-card:hover .stack-card-front img {
+        transform: scale(1.05);
+      }
+
+      .stack-card-label {
+        position: absolute;
+        inset-inline: 0;
+        bottom: 0;
+        padding: 2rem 1rem 0.85rem;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.92), transparent);
+      }
+
+      .stack-card-placeholder {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #262626 0%, #171717 100%);
+      }
+
+      .video-gallery {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+      }
+
+      .video-grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .video-grid-landscape {
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: 640px) {
+        .video-grid-landscape {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .video-grid-landscape {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      .video-grid-portrait {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      @media (min-width: 640px) {
+        .video-grid-portrait {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .video-grid-portrait {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+      }
+
+      .video-section-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(234, 179, 8, 0.75);
+        margin-bottom: 0.75rem;
+      }
+
+      .video-grid-item {
+        min-width: 0;
+      }
+
+      .video-tile {
+        position: relative;
+        border: 1px solid rgba(234, 179, 8, 0.25);
+        background: #171717;
+        overflow: hidden;
+      }
+
+      .video-tile-landscape {
+        aspect-ratio: 16 / 9;
+      }
+
+      .video-tile-portrait {
+        aspect-ratio: 9 / 16;
+      }
+
+      .video-tile iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+      }
+
+      .video-tile-link {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .video-tile-thumb {
+        flex: 1;
+        position: relative;
+        background: #262626;
+        min-height: 0;
+      }
+
+      .video-tile-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .video-tile-play {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.35);
+        transition: background 0.2s;
+      }
+
+      .video-tile-link:hover .video-tile-play {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      .video-tile-external-hint {
+        position: absolute;
+        bottom: 0.65rem;
+        left: 50%;
+        z-index: 1;
+        transform: translateX(-50%);
+        font-size: 0.75rem;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.75);
+        padding: 0.25rem 0.6rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(234, 179, 8, 0.35);
+        white-space: nowrap;
+      }
+
+      .video-tile-caption {
+        padding: 0.65rem 0.75rem;
+        font-size: 0.875rem;
+        border-top: 1px solid rgba(234, 179, 8, 0.15);
+      }
+
+      .platform-badge {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        z-index: 2;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.45rem;
+        background: rgba(0, 0, 0, 0.75);
+        color: #eab308;
+        border: 1px solid rgba(234, 179, 8, 0.35);
+      }
+
+      #video-overlay:not(.hidden) {
+        display: flex;
+      }
+
+      .video-overlay-panel {
+        max-height: calc(100dvh - 2rem);
+      }
+
+      @media (min-width: 768px) {
+        .video-overlay-panel {
+          max-height: calc(100dvh - 4rem);
+        }
+      }
+
+      .video-overlay-body {
+        -webkit-overflow-scrolling: touch;
+      }
     </style>
   </head>
   <body class="bg-neutral-950 text-neutral-100 font-sans antialiased">
@@ -87,8 +332,10 @@
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-          <a href="#portfolio" class="hover:text-yellow-400 transition-colors"
-            >Portfolio</a
+          <a
+            href="#works"
+            class="hover:text-yellow-400 transition-colors"
+            >Works</a
           >
           <a
             href="#contact"
@@ -111,7 +358,7 @@
       class="fixed inset-0 z-40 bg-neutral-900 pt-24 px-6 hidden transform transition-transform duration-300"
     >
       <div class="flex flex-col gap-6 text-2xl font-semibold text-neutral-100">
-        <a href="#portfolio" class="mobile-link">Portfolio</a>
+        <a href="#works" class="mobile-link hover:text-yellow-400 transition-colors">Works</a>
         <a href="#contact" class="mobile-link text-yellow-500">Contact</a>
       </div>
       <button
@@ -129,7 +376,7 @@
       <!-- Background Image with Overlay -->
       <div class="absolute inset-0 z-0">
         <img
-          src="/static/hero-bg.jpg"
+          src="/media/covers/hero.jpg"
           alt="Hero Background"
           class="w-full h-full object-cover"
         />
@@ -154,44 +401,87 @@
           </p>
           <div class="flex flex-wrap gap-4">
             <a
-              href="#portfolio"
-              class="px-8 py-4 bg-yellow-500 text-neutral-900 rounded-full font-bold hover:bg-yellow-400 transition-colors flex items-center gap-2"
+              href="#works"
+              class="px-8 py-4 border-2 border-yellow-500 text-yellow-500 rounded-full font-bold hover:bg-yellow-500/10 transition-colors flex items-center gap-2"
             >
-              View Gallery <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              View Works <i data-lucide="chevron-right" class="w-4 h-4"></i>
             </a>
             <a
               href="#contact"
-              class="px-8 py-4 bg-transparent border-2 border-yellow-500 text-yellow-500 rounded-full font-bold hover:bg-yellow-500/10 transition-colors"
+              class="px-8 py-4 bg-yellow-500 text-neutral-900 rounded-full font-bold hover:bg-yellow-400 transition-colors flex items-center gap-2"
             >
-              Contact Me
+              Contact Me <i data-lucide="chevron-right" class="w-4 h-4"></i>
             </a>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 px-6 container mx-auto">
-      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
-        <div>
-          <h2 class="text-3xl font-bold mb-2 text-yellow-500">Selected Works</h2>
-          <p class="text-neutral-400">A collection of my favorite moments.</p>
+    <!-- Works / Video Portfolio -->
+    <section
+      id="works"
+      class="works-dotted-bg py-20 px-6 border-t border-yellow-500/20"
+    >
+      <div class="container mx-auto">
+        <div class="mb-12 animate-fade-in-up">
+          <h2 class="text-3xl font-bold mb-2 text-yellow-500">WORKS</h2>
+          <p class="text-neutral-400">Selected video by category</p>
         </div>
-
-        <!-- Categories -->
-        <div class="flex flex-wrap gap-2 mt-6 md:mt-0" id="category-filters">
-          <!-- Buttons injected by JS -->
-        </div>
-      </div>
-
-      <!-- Gallery Grid -->
-      <div
-        id="gallery-grid"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-      >
-        <!-- Items injected by JS -->
+        <div
+          id="works-grid"
+          class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto"
+        ></div>
       </div>
     </section>
+
+    <!-- Video category overlay -->
+    <div
+      id="video-overlay"
+      class="hidden fixed inset-0 z-[60] items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-sm overflow-hidden"
+      aria-hidden="true"
+    >
+      <div
+        id="video-overlay-backdrop"
+        class="absolute inset-0"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="video-overlay-panel relative w-full max-w-5xl flex flex-col overflow-hidden bg-neutral-950 border border-yellow-500/25 shadow-2xl animate-fade-in-down"
+      >
+        <div
+          class="shrink-0 flex items-start justify-between gap-4 p-5 md:p-6 border-b border-yellow-500/20 bg-neutral-950"
+        >
+          <div>
+            <button
+              id="video-overlay-back"
+              type="button"
+              class="text-sm text-neutral-400 hover:text-yellow-400 transition-colors mb-2 flex items-center gap-1"
+            >
+              <i data-lucide="arrow-left" class="w-4 h-4"></i> Back
+            </button>
+            <h3 id="video-overlay-title" class="text-2xl font-bold text-white"></h3>
+            <p id="video-overlay-subtitle" class="text-neutral-400 text-sm mt-1"></p>
+          </div>
+          <button
+            id="video-overlay-close"
+            type="button"
+            class="shrink-0 w-10 h-10 flex items-center justify-center border border-yellow-500/30 text-neutral-300 hover:text-yellow-400 hover:border-yellow-500 transition-colors"
+            aria-label="Close"
+          >
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+        <div class="video-overlay-body overflow-y-auto flex-1 min-h-0 p-5 md:p-6">
+          <div id="video-gallery" class="video-gallery"></div>
+          <p
+            id="video-empty-state"
+            class="hidden text-center text-neutral-500 py-12 border border-dashed border-neutral-700"
+          >
+            No videos yet — links coming soon.
+          </p>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer / Contact -->
     <footer
@@ -300,371 +590,480 @@
         </div>
       </div>
     </footer>
-
-    <!-- Image Lightbox Modal -->
-    <div id="lightbox" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-sm">
-      <button
-        id="closeLightbox"
-        class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center bg-neutral-900 hover:bg-yellow-500 text-white hover:text-neutral-900 rounded-full transition-all z-10"
-        aria-label="Close"
-      >
-        <i data-lucide="x" class="w-6 h-6"></i>
-      </button>
-      
-      <button
-        id="prevImage"
-        class="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-neutral-900 hover:bg-yellow-500 text-white hover:text-neutral-900 rounded-full transition-all z-10"
-        aria-label="Previous"
-      >
-        <i data-lucide="chevron-left" class="w-6 h-6"></i>
-      </button>
-      
-      <button
-        id="nextImage"
-        class="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-neutral-900 hover:bg-yellow-500 text-white hover:text-neutral-900 rounded-full transition-all z-10"
-        aria-label="Next"
-      >
-        <i data-lucide="chevron-right" class="w-6 h-6"></i>
-      </button>
-
-      <div class="w-full h-full flex items-center justify-center p-6">
-        <img
-          id="lightboxImage"
-          src=""
-          alt=""
-          class="max-w-full max-h-full object-contain"
-        />
-      </div>
-      
-      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
-        <p id="lightboxTitle" class="text-white text-lg font-medium mb-1"></p>
-        <p id="lightboxCounter" class="text-neutral-400 text-sm"></p>
-      </div>
-    </div>
-
     <!-- JavaScript Application Logic -->
     <script>
-      // Initialize Lucide Icons
       lucide.createIcons();
 
-      // State Management
-      const state = {
-        activeCategory: "Behind the Scenes", // Default category
-        scrolled: false,
-        isMenuOpen: false,
-        lightboxOpen: false,
-        currentImageIndex: 0,
-        currentImages: [],
+      const videoCategories = [
+        {
+          id: "events",
+          title: "Events",
+          subtitle: "Event coverage",
+          preview: null,
+        },
+        {
+          id: "dental",
+          title: "Dental Clinic",
+          subtitle: "Dental clinic content",
+          preview: null,
+        },
+        {
+          id: "tech",
+          title: "Tech Reviews",
+          subtitle: "Gear, computers & gadgets",
+          preview: null,
+        },
+        {
+          id: "commerce",
+          title: "Commerce",
+          subtitle: "Social commerce clips",
+          preview: null,
+        },
+        {
+          id: "interviews",
+          title: "Interviews",
+          subtitle: "Interview sessions",
+          preview: null,
+        },
+        {
+          id: "cosplay",
+          title: "Cosplay",
+          subtitle: "Cosplay shoots",
+          preview: null,
+        },
+        {
+          id: "product",
+          title: "Product",
+          subtitle: "Product videos",
+          preview: null,
+        },
+        {
+          id: "mv",
+          title: "Music Video",
+          subtitle: "Music videos",
+          preview: null,
+        },
+        {
+          id: "assistance",
+          title: "Assistance",
+          subtitle: "Camera, Lighting, Sound",
+          preview: "https://img.youtube.com/vi/BhIApuyYCFM/hqdefault.jpg",
+        },
+      ];
+
+      const videoItems = [
+        {
+          category: "assistance",
+          platform: "youtube",
+          orientation: "landscape",
+          title: "GAVIN:D - บวบ feat. YOUNGOHM, FIIXD, โอมงกะลงปง แทนบ๋อย「Official MV」",
+          url: "https://www.youtube.com/watch?v=BhIApuyYCFM",
+          externalOnly: true,
+        },
+        {
+          category: "assistance",
+          platform: "youtube",
+          orientation: "landscape",
+          title: "The Pollution (หนังสั้น) - [Short Film]",
+          url: "https://www.youtube.com/watch?v=YclZXaSNBvs",
+          embed: "https://www.youtube.com/embed/YclZXaSNBvs",
+        },
+        {
+          category: "assistance",
+          platform: "youtube",
+          orientation: "landscape",
+          title: "The Vuniyerse - Rush [OFFICIAL MUSIC VIDEO]",
+          url: "https://www.youtube.com/watch?v=WRxGzsLC6ww",
+          embed: "https://www.youtube.com/embed/WRxGzsLC6ww",
+        },
+        {
+          category: "assistance",
+          platform: "youtube",
+          orientation: "landscape",
+          title: "AKIRA KURØ - WE ARE Ø / WE ARE AKIRA KURØ [OFFiCiAL MV]",
+          url: "https://www.youtube.com/watch?v=nKDxgVa0xfg",
+          embed: "https://www.youtube.com/embed/nKDxgVa0xfg",
+        },
+        {
+          category: "assistance",
+          platform: "youtube",
+          orientation: "landscape",
+          title: "BIGBANG CAT",
+          url: "https://www.youtube.com/watch?v=FqxAWl1HWC8",
+          externalOnly: true,
+        },
+        {
+          category: "assistance",
+          platform: "youtube",
+          orientation: "landscape",
+          title: "BAB Short Film Contest 2019: ทีมภาพซ้อนฟิล์ม เรื่องปลีกวิเวก headspace",
+          url: "https://www.youtube.com/watch?v=vvYOrG-LPgU",
+          externalOnly: true,
+        },
+        {
+          category: "assistance",
+          platform: "youtube",
+          orientation: "landscape",
+          title: "เข้าฝัน - Tiger Killer |Official MV|",
+          url: "https://www.youtube.com/watch?v=YiKk_sVmOe4",
+          embed: "https://www.youtube.com/embed/YiKk_sVmOe4",
+        },
+        {
+          category: "assistance",
+          platform: "youtube",
+          orientation: "landscape",
+          title: "เอาเด็กรับใช้มาเดินแบบ | แพศยา EP.6 | iQiyi Thailand",
+          url: "https://www.youtube.com/watch?v=XZgHrrppu2c",
+          embed: "https://www.youtube.com/embed/XZgHrrppu2c",
+        },
+        {
+          category: "assistance",
+          platform: "youtube",
+          orientation: "landscape",
+          title: "หันโล่ แคนยูเปิดใจ - เซียนหรั่น [Official MV]",
+          url: "https://www.youtube.com/watch?v=fFR7ybjOmOE",
+          embed: "https://www.youtube.com/embed/fFR7ybjOmOE",
+        },
+        {
+          category: "assistance",
+          platform: "youtube",
+          orientation: "landscape",
+          title: "ฆ่าอ้าย - เม้ก อภิสิทธิ์ [Official MV]",
+          url: "https://www.youtube.com/watch?v=hzW85lzUOK0",
+          embed: "https://www.youtube.com/embed/hzW85lzUOK0",
+        },
+        {
+          category: "assistance",
+          platform: "facebook",
+          orientation: "landscape",
+          title: "Facebook Video",
+          url: "https://www.facebook.com/share/v/1CLEspEUjn/",
+          thumbnail: "/media/video-thumbs/facebook-1CLEspEUjn.jpg",
+          externalOnly: true,
+        },
+        {
+          category: "assistance",
+          platform: "vimeo",
+          orientation: "landscape",
+          title: "Company Profile : GSB",
+          url: "https://vimeo.com/1197954995",
+          embed: "https://player.vimeo.com/video/1197954995",
+        },
+        {
+          category: "assistance",
+          platform: "vimeo",
+          orientation: "landscape",
+          title: "Company Profile : Winner Group Enterprise PLC.",
+          url: "https://vimeo.com/1197961868",
+          embed: "https://player.vimeo.com/video/1197961868",
+        },
+        {
+          category: "assistance",
+          platform: "vimeo",
+          orientation: "landscape",
+          title: "แนะนำผลิตภัณฑ์ Rpro (GLi)",
+          url: "https://vimeo.com/1201992957",
+          embed: "https://player.vimeo.com/video/1201992957",
+        },
+        {
+          category: "assistance",
+          platform: "instagram",
+          orientation: "portrait",
+          title: "Instagram Reel",
+          url: "https://www.instagram.com/reel/DYpEt8tJkrH/",
+          thumbnail: "/media/video-thumbs/ig-DYpEt8tJkrH.jpg",
+          externalOnly: true,
+        },
+        {
+          category: "assistance",
+          platform: "instagram",
+          orientation: "portrait",
+          title: "Instagram Reel",
+          url: "https://www.instagram.com/reel/DVdZTJrE6s6/",
+          thumbnail: "/media/video-thumbs/ig-DVdZTJrE6s6.jpg",
+          externalOnly: true,
+        },
+        {
+          category: "assistance",
+          platform: "instagram",
+          orientation: "portrait",
+          title: "Instagram Reel",
+          url: "https://www.instagram.com/reel/DYEXOnNJSio/",
+          thumbnail: "/media/video-thumbs/ig-DYEXOnNJSio.jpg",
+          externalOnly: true,
+        },
+        {
+          category: "assistance",
+          platform: "instagram",
+          orientation: "portrait",
+          title: "Instagram Post",
+          url: "https://www.instagram.com/p/DaSUdefkpu3/",
+          thumbnail: "/media/video-thumbs/ig-DaSUdefkpu3.jpg",
+          externalOnly: true,
+        },
+        {
+          category: "assistance",
+          platform: "instagram",
+          orientation: "portrait",
+          title: "Instagram Post",
+          url: "https://www.instagram.com/p/DaXoPs4kgh_/",
+          thumbnail: "/media/video-thumbs/ig-DaXoPs4kgh_.jpg",
+          externalOnly: true,
+        },
+        {
+          category: "assistance",
+          platform: "instagram",
+          orientation: "portrait",
+          title: "Instagram Reel",
+          url: "https://www.instagram.com/reel/DaUwG9cSHzb/",
+          thumbnail: "/media/video-thumbs/ig-DaUwG9cSHzb.jpg",
+          externalOnly: true,
+        },
+        {
+          category: "assistance",
+          platform: "instagram",
+          orientation: "portrait",
+          title: "Instagram Reel",
+          url: "https://www.instagram.com/reel/DaPr_q1SuLD/",
+          thumbnail: "/media/video-thumbs/ig-DaPr_q1SuLD.jpg",
+          externalOnly: true,
+        },
+      ];
+
+      const platformLabels = {
+        youtube: "YouTube",
+        tiktok: "TikTok",
+        instagram: "Instagram",
+        facebook: "Facebook",
+        vimeo: "Vimeo",
       };
 
-      // Data
-      const categories = [
-        "Behind the Scenes",
-        "Automotive",
-        "Food & Commercial",
-        "Portrait & Cinema",
-        "Family",
-        "Sports",
-      ];
+      const state = {
+        scrolled: false,
+        isMenuOpen: false,
+        activeCategoryId: null,
+      };
 
-      const portfolioItems = [
-        // BEHIND THE SCENES - 32 Images
-        { id: 1, category: "Behind the Scenes", src: "/media/behide/MTF00010-min.jpg", title: "On Set", size: "wide" },
-        { id: 2, category: "Behind the Scenes", src: "/media/behide/MTF00047-min.jpg", title: "Creative Process", size: "standard" },
-        { id: 3, category: "Behind the Scenes", src: "/media/behide/MTF00048-min.jpg", title: "Shoot Preparation", size: "standard" },
-        { id: 4, category: "Behind the Scenes", src: "/media/behide/MTF00056-min.jpg", title: "Behind the Lens", size: "standard" },
-        { id: 5, category: "Behind the Scenes", src: "/media/behide/MTF00159-min.jpg", title: "Production Setup", size: "wide" },
-        { id: 6, category: "Behind the Scenes", src: "/media/behide/MTF00170-min.jpg", title: "Camera Work", size: "standard" },
-        { id: 7, category: "Behind the Scenes", src: "/media/behide/MTF00174-min.jpg", title: "Lighting Setup", size: "standard" },
-        { id: 8, category: "Behind the Scenes", src: "/media/behide/MTF00187-min.jpg", title: "Team Collaboration", size: "standard" },
-        { id: 9, category: "Behind the Scenes", src: "/media/behide/MTF00189-min.jpg", title: "Working Together", size: "wide" },
-        { id: 10, category: "Behind the Scenes", src: "/media/behide/MTF00192-min.jpg", title: "Setting Up Shot", size: "standard" },
-        { id: 11, category: "Behind the Scenes", src: "/media/behide/MTF00207-min.jpg", title: "Production Day", size: "standard" },
-        { id: 12, category: "Behind the Scenes", src: "/media/behide/MTF00223-min.jpg", title: "On Location", size: "standard" },
-        { id: 13, category: "Behind the Scenes", src: "/media/behide/MTF00227-min.jpg", title: "Photographer at Work", size: "standard" },
-        { id: 14, category: "Behind the Scenes", src: "/media/behide/MTF00261-min.jpg", title: "Making Magic", size: "standard" },
-        { id: 15, category: "Behind the Scenes", src: "/media/behide/MTF00266-min.jpg", title: "Studio Session", size: "standard" },
-        { id: 16, category: "Behind the Scenes", src: "/media/behide/MTF00279-min.jpg", title: "Directing the Shot", size: "wide" },
-        { id: 17, category: "Behind the Scenes", src: "/media/behide/MTF00282-min.jpg", title: "In Action", size: "standard" },
-        { id: 18, category: "Behind the Scenes", src: "/media/behide/MTF00321-min.jpg", title: "Creative Vision", size: "standard" },
-        { id: 19, category: "Behind the Scenes", src: "/media/behide/MTF00325-min.jpg", title: "Capturing Moments", size: "standard" },
-        { id: 20, category: "Behind the Scenes", src: "/media/behide/MTF00374-min.jpg", title: "Professional Setup", size: "standard" },
-        { id: 21, category: "Behind the Scenes", src: "/media/behide/MTF00385-min.jpg", title: "Photography Life", size: "standard" },
-        { id: 155, category: "Behind the Scenes", src: "/media/behide/MTF00877-min.jpg", title: "Film Production", size: "wide" },
-        { id: 156, category: "Behind the Scenes", src: "/media/behide/MTF00923-min.jpg", title: "Behind the Camera", size: "standard" },
-        { id: 157, category: "Behind the Scenes", src: "/media/behide/MTF00946-min.jpg", title: "Production Crew", size: "standard" },
-        { id: 158, category: "Behind the Scenes", src: "/media/behide/MTF00970-min.jpg", title: "Set Life", size: "standard" },
-        { id: 159, category: "Behind the Scenes", src: "/media/behide/MTF00974-min.jpg", title: "Filming Day", size: "wide" },
-        { id: 160, category: "Behind the Scenes", src: "/media/behide/MTF00999-min.jpg", title: "Equipment Setup", size: "standard" },
-        { id: 161, category: "Behind the Scenes", src: "/media/behide/MTF01057-min.jpg", title: "Director's View", size: "standard" },
-        { id: 162, category: "Behind the Scenes", src: "/media/behide/MTF01063-min.jpg", title: "Crew at Work", size: "standard" },
-        { id: 163, category: "Behind the Scenes", src: "/media/behide/MTF01069-min.jpg", title: "Technical Setup", size: "standard" },
-        { id: 164, category: "Behind the Scenes", src: "/media/behide/MTF01087-min.jpg", title: "Working Environment", size: "standard" },
-        { id: 165, category: "Behind the Scenes", src: "/media/behide/MTF01281-min.jpg", title: "Photography Session", size: "standard" },
-
-        // AUTOMOTIVE - 30 Images (Optimized layout pattern)
-        { id: 22, category: "Automotive", src: "/media/cars/car-00049.jpg", title: "BMW M2 - The White Beast", size: "wide" },
-        { id: 2, category: "Automotive", src: "/media/cars/car-00050.jpg", title: "M2 Side Profile", size: "standard" },
-        { id: 3, category: "Automotive", src: "/media/cars/car-00035.jpg", title: "Toyota AE86 Trueno", size: "standard" },
-        { id: 4, category: "Automotive", src: "/media/cars/car-00039.jpg", title: "Classic VW Beetle", size: "standard" },
-        { id: 5, category: "Automotive", src: "/media/cars/car-00027.jpg", title: "BMW i4 M50 - Electric Blue", size: "wide" },
-        { id: 6, category: "Automotive", src: "/media/cars/car-00011.jpg", title: "JDM Legends", size: "standard" },
-        { id: 7, category: "Automotive", src: "/media/cars/car-00044.jpg", title: "M2 G87 Collage", size: "standard" },
-        { id: 8, category: "Automotive", src: "/media/cars/car-00032.jpg", title: "i4 M50 Caliper Detail", size: "standard" },
-        { id: 9, category: "Automotive", src: "/media/cars/car-00018.jpg", title: "Track Ready", size: "wide" },
-        { id: 10, category: "Automotive", src: "/media/cars/car-00046.jpg", title: "M Performance Wheels", size: "standard" },
-        { id: 11, category: "Automotive", src: "/media/cars/car-00043.jpg", title: "Night Drive", size: "standard" },
-        { id: 12, category: "Automotive", src: "/media/cars/car-00034.jpg", title: "Porsche 911 Details", size: "standard" },
-        { id: 13, category: "Automotive", src: "/media/cars/car-00006.jpg", title: "Performance Cars", size: "wide" },
-        { id: 14, category: "Automotive", src: "/media/cars/car-00056.jpg", title: "Rolling Shot", size: "standard" },
-        { id: 15, category: "Automotive", src: "/media/cars/car-00022.jpg", title: "Exotic Lineup", size: "standard" },
-        { id: 16, category: "Automotive", src: "/media/cars/car-00036.jpg", title: "BMW Touring Stance", size: "standard" },
-        { id: 17, category: "Automotive", src: "/media/cars/car-00028.jpg", title: "i4 M50 Front", size: "standard" },
-        { id: 18, category: "Automotive", src: "/media/cars/car-00037.jpg", title: "Classic Collection", size: "standard" },
-        { id: 19, category: "Automotive", src: "/media/cars/car-00051.jpg", title: "M2 Detail Shot", size: "standard" },
-        { id: 20, category: "Automotive", src: "/media/cars/car-00001.jpg", title: "Event Atmosphere", size: "wide" },
-        { id: 21, category: "Automotive", src: "/media/cars/car-00029.jpg", title: "i4 M50 Side View", size: "standard" },
-        { id: 22, category: "Automotive", src: "/media/cars/car-00013.jpg", title: "Automotive Art", size: "standard" },
-        { id: 23, category: "Automotive", src: "/media/cars/car-00017.jpg", title: "Detail Perfection", size: "standard" },
-        { id: 24, category: "Automotive", src: "/media/cars/car-00041.jpg", title: "Urban Photography", size: "standard" },
-        { id: 25, category: "Automotive", src: "/media/cars/car-00038.jpg", title: "Cars & Coffee Meet", size: "standard" },
-        { id: 26, category: "Automotive", src: "/media/cars/car-00033.jpg", title: "i4 M50 Wheels", size: "standard" },
-        { id: 27, category: "Automotive", src: "/media/cars/car-00047.jpg", title: "M2 Front Angle", size: "standard" },
-        { id: 28, category: "Automotive", src: "/media/cars/car-00030.jpg", title: "i4 M50 Profile", size: "standard" },
-        { id: 29, category: "Automotive", src: "/media/cars/car-00024.jpg", title: "Modified Masterpiece", size: "standard" },
-        { id: 30, category: "Automotive", src: "/media/cars/car-00052.jpg", title: "M2 Close-up", size: "standard" },
-
-        // FOOD & COMMERCIAL - 27 Images (Optimized layout)
-        { id: 31, category: "Food & Commercial", src: "/media/foods/food-00003.jpg", title: "Fine Dining Excellence", size: "wide" },
-        { id: 32, category: "Food & Commercial", src: "/media/foods/food-00010.jpg", title: "Restaurant Quality", size: "standard" },
-        { id: 33, category: "Food & Commercial", src: "/media/foods/food-00020.jpg", title: "Modern Presentation", size: "standard" },
-        { id: 34, category: "Food & Commercial", src: "/media/foods/food-00007.jpg", title: "Artisan Dish", size: "standard" },
-        { id: 35, category: "Food & Commercial", src: "/media/foods/food-00019.jpg", title: "Traditional Cuisine", size: "wide" },
-        { id: 36, category: "Food & Commercial", src: "/media/foods/food-00015.jpg", title: "Bakery Fresh", size: "standard" },
-        { id: 37, category: "Food & Commercial", src: "/media/foods/food-00011.jpg", title: "Delicious Details", size: "standard" },
-        { id: 38, category: "Food & Commercial", src: "/media/foods/food-00008.jpg", title: "Chef's Special", size: "standard" },
-        { id: 39, category: "Food & Commercial", src: "/media/foods/food-00017.jpg", title: "Cafe Culture", size: "standard" },
-        { id: 40, category: "Food & Commercial", src: "/media/foods/food-00025.jpg", title: "Appetizing Appeal", size: "standard" },
-        { id: 41, category: "Food & Commercial", src: "/media/foods/food-00012.jpg", title: "Comfort Food", size: "standard" },
-        { id: 42, category: "Food & Commercial", src: "/media/foods/food-00002.jpg", title: "Culinary Collection", size: "wide" },
-        { id: 43, category: "Food & Commercial", src: "/media/foods/food-00004.jpg", title: "Gourmet Presentation", size: "standard" },
-        { id: 44, category: "Food & Commercial", src: "/media/foods/food-00005.jpg", title: "Plated Perfection", size: "standard" },
-        { id: 45, category: "Food & Commercial", src: "/media/foods/food-00006.jpg", title: "Fresh Ingredients", size: "standard" },
-        { id: 46, category: "Food & Commercial", src: "/media/foods/food-00021.jpg", title: "Signature Dish", size: "wide" },
-        { id: 47, category: "Food & Commercial", src: "/media/foods/food-00009.jpg", title: "Food Styling", size: "standard" },
-        { id: 48, category: "Food & Commercial", src: "/media/foods/food-00013.jpg", title: "Dessert Dreams", size: "standard" },
-        { id: 49, category: "Food & Commercial", src: "/media/foods/food-00014.jpg", title: "Sweet Treats", size: "standard" },
-        { id: 50, category: "Food & Commercial", src: "/media/foods/food-00016.jpg", title: "Pastry Art", size: "standard" },
-        { id: 51, category: "Food & Commercial", src: "/media/foods/food-00001.jpg", title: "Street Food", size: "standard" },
-        { id: 52, category: "Food & Commercial", src: "/media/foods/food-00018.jpg", title: "Local Flavors", size: "standard" },
-        { id: 53, category: "Food & Commercial", src: "/media/foods/food-00023.jpg", title: "Food Photography", size: "standard" },
-        { id: 54, category: "Food & Commercial", src: "/media/foods/food-00022.jpg", title: "Menu Highlight", size: "standard" },
-        { id: 55, category: "Food & Commercial", src: "/media/foods/food-00024.jpg", title: "Commercial Shoot", size: "standard" },
-        { id: 56, category: "Food & Commercial", src: "/media/foods/food-00026.jpg", title: "Tasty Composition", size: "standard" },
-        { id: 57, category: "Food & Commercial", src: "/media/foods/food-00027.jpg", title: "Mouth-watering", size: "standard" },
-
-        // SPORTS - 16 Images
-        { id: 58, category: "Sports", src: "/media/sports/sport-00007.jpg", title: "Action in Motion", size: "wide" },
-        { id: 59, category: "Sports", src: "/media/sports/sport-00012.jpg", title: "Athletic Moment", size: "standard" },
-        { id: 60, category: "Sports", src: "/media/sports/sport-00004.jpg", title: "Game Day", size: "standard" },
-        { id: 61, category: "Sports", src: "/media/sports/sport-00008.jpg", title: "Competition", size: "standard" },
-        { id: 62, category: "Sports", src: "/media/sports/sport-00003.jpg", title: "Focus & Determination", size: "wide" },
-        { id: 63, category: "Sports", src: "/media/sports/sport-00016.jpg", title: "Victory Moment", size: "standard" },
-        { id: 64, category: "Sports", src: "/media/sports/sport-00011.jpg", title: "Dynamic Action", size: "standard" },
-        { id: 65, category: "Sports", src: "/media/sports/sport-00002.jpg", title: "In the Zone", size: "standard" },
-        { id: 66, category: "Sports", src: "/media/sports/sport-00013.jpg", title: "Victory Celebration", size: "wide" },
-        { id: 67, category: "Sports", src: "/media/sports/sport-00015.jpg", title: "Sporting Excellence", size: "standard" },
-        { id: 68, category: "Sports", src: "/media/sports/sport-00009.jpg", title: "Athletic Performance", size: "standard" },
-        { id: 69, category: "Sports", src: "/media/sports/sport-00010.jpg", title: "Sports Action", size: "standard" },
-        { id: 70, category: "Sports", src: "/media/sports/sport-00006.jpg", title: "Game Moment", size: "standard" },
-        { id: 71, category: "Sports", src: "/media/sports/sport-00005.jpg", title: "Competitive Spirit", size: "standard" },
-        { id: 72, category: "Sports", src: "/media/sports/sport-00001.jpg", title: "Team Spirit", size: "standard" },
-        { id: 73, category: "Sports", src: "/media/sports/sport-00014.jpg", title: "Team Achievement", size: "standard" },
-
-        // FAMILY - 22 Images
-        { id: 74, category: "Family", src: "/media/family/DSC03596.jpg", title: "Family Gathering", size: "wide" },
-        { id: 75, category: "Family", src: "/media/family/DSC03594.jpg", title: "Family Portrait", size: "standard" },
-        { id: 76, category: "Family", src: "/media/family/DSC03588.jpg", title: "Precious Moments", size: "standard" },
-        { id: 77, category: "Family", src: "/media/family/DSC03585.jpg", title: "Together Time", size: "standard" },
-        { id: 78, category: "Family", src: "/media/family/DSC03454.jpg", title: "Together Forever", size: "wide" },
-        { id: 79, category: "Family", src: "/media/family/DSC03579.jpg", title: "Family Joy", size: "standard" },
-        { id: 80, category: "Family", src: "/media/family/DSC03534.jpg", title: "Generations Together", size: "standard" },
-        { id: 81, category: "Family", src: "/media/family/DSC03447.jpg", title: "Family Connection", size: "standard" },
-        { id: 82, category: "Family", src: "/media/family/DSC03186.jpg", title: "Together Always", size: "wide" },
-        { id: 83, category: "Family", src: "/media/family/DSC03430.jpg", title: "Bonding Moments", size: "standard" },
-        { id: 84, category: "Family", src: "/media/family/DSC03359.jpg", title: "Candid Moments", size: "standard" },
-        { id: 85, category: "Family", src: "/media/family/DSC03331.jpg", title: "Family Bonds", size: "standard" },
-        { id: 86, category: "Family", src: "/media/family/DSC03325.jpg", title: "Shared Love", size: "standard" },
-        { id: 87, category: "Family", src: "/media/family/DSC03191.jpg", title: "Family Smiles", size: "standard" },
-        { id: 88, category: "Family", src: "/media/family/DSC03188.jpg", title: "Joyful Connection", size: "standard" },
-        { id: 89, category: "Family", src: "/media/family/DSC03183.jpg", title: "Love & Laughter", size: "standard" },
-        { id: 90, category: "Family", src: "/media/family/DSC03182.jpg", title: "Family Unity", size: "standard" },
-        { id: 91, category: "Family", src: "/media/family/DSC03174.jpg", title: "Memorable Moments", size: "standard" },
-        { id: 92, category: "Family", src: "/media/family/DSC03168.jpg", title: "Making Memories", size: "standard" },
-        { id: 93, category: "Family", src: "/media/family/DSC03166.jpg", title: "Family Love", size: "standard" },
-        { id: 94, category: "Family", src: "/media/family/DSC03164.jpg", title: "Happy Times", size: "standard" },
-        { id: 95, category: "Family", src: "/media/family/DSC03161.jpg", title: "Cherished Moments", size: "standard" },
-
-        // PORTRAIT & CINEMA - 28 Images (Optimized layout)
-        { id: 126, category: "Portrait & Cinema", src: "/media/portrait/portrait-00018.jpg", title: "Portrait Session", size: "wide" },
-        { id: 127, category: "Portrait & Cinema", src: "/media/portrait/portrait-00016.jpg", title: "Natural Light", size: "standard" },
-        { id: 128, category: "Portrait & Cinema", src: "/media/portrait/portrait-00017.jpg", title: "Urban Portrait", size: "standard" },
-        { id: 129, category: "Portrait & Cinema", src: "/media/portrait/portrait-00014.jpg", title: "Studio Portrait", size: "standard" },
-        { id: 130, category: "Portrait & Cinema", src: "/media/portrait/portrait-00015.jpg", title: "Classic Shot", size: "wide" },
-        { id: 131, category: "Portrait & Cinema", src: "/media/portrait/portrait-00013.jpg", title: "Editorial Style", size: "standard" },
-        { id: 132, category: "Portrait & Cinema", src: "/media/portrait/portrait-00011.jpg", title: "Professional Look", size: "standard" },
-        { id: 133, category: "Portrait & Cinema", src: "/media/portrait/portrait-00012.jpg", title: "Candid Portrait", size: "standard" },
-        { id: 134, category: "Portrait & Cinema", src: "/media/portrait/portrait-00010.jpg", title: "Headshot", size: "wide" },
-        { id: 135, category: "Portrait & Cinema", src: "/media/portrait/portrait-00008.jpg", title: "Portrait Lighting", size: "standard" },
-        { id: 136, category: "Portrait & Cinema", src: "/media/portrait/portrait-00009.jpg", title: "Character Study", size: "standard" },
-        { id: 137, category: "Portrait & Cinema", src: "/media/portrait/portrait-00005.jpg", title: "Modern Portrait", size: "standard" },
-        { id: 138, category: "Portrait & Cinema", src: "/media/portrait/portrait-00006.jpg", title: "Artistic Portrait", size: "standard" },
-        { id: 139, category: "Portrait & Cinema", src: "/media/portrait/portrait-00007.jpg", title: "Minimal Style", size: "standard" },
-        { id: 140, category: "Portrait & Cinema", src: "/media/portrait/portrait-00003.jpg", title: "Creative Portrait", size: "standard" },
-        { id: 141, category: "Portrait & Cinema", src: "/media/portrait/portrait-00004.jpg", title: "Fashion Portrait", size: "wide" },
-        { id: 142, category: "Portrait & Cinema", src: "/media/portrait/portrait-00001.jpg", title: "Outdoor Session", size: "standard" },
-        { id: 143, category: "Portrait & Cinema", src: "/media/portrait/portrait-00002.jpg", title: "Natural Beauty", size: "standard" },
-
-        { id: 146, category: "Portrait & Cinema", src: "/media/cinema/MTF00076.jpg", title: "Cinematic Frame", size: "wide" },
-        { id: 147, category: "Portrait & Cinema", src: "/media/cinema/MTF00058.jpg", title: "Film Production", size: "standard" },
-        { id: 148, category: "Portrait & Cinema", src: "/media/cinema/MTF00071.jpg", title: "Movie Scene", size: "standard" },
-        { id: 149, category: "Portrait & Cinema", src: "/media/cinema/MTF00035.jpg", title: "Cinematography", size: "standard" },
-        { id: 150, category: "Portrait & Cinema", src: "/media/cinema/MTF00054.jpg", title: "Film Set", size: "wide" },
-        { id: 151, category: "Portrait & Cinema", src: "/media/cinema/MTF00027.jpg", title: "Movie Magic", size: "standard" },
-        { id: 152, category: "Portrait & Cinema", src: "/media/cinema/MTF00008.jpg", title: "Cinema Art", size: "standard" },
-        { id: 153, category: "Portrait & Cinema", src: "/media/cinema/MTF00011.jpg", title: "Visual Storytelling", size: "standard" },
-        { id: 154, category: "Portrait & Cinema", src: "/media/cinema/MTF00015.jpg", title: "Film Work", size: "standard" },
-      ];
-
-      // DOM Elements
       const navbar = document.getElementById("navbar");
       const menuBtn = document.getElementById("menu-btn");
       const closeMenuBtn = document.getElementById("close-menu-btn");
       const mobileMenu = document.getElementById("mobile-menu");
       const mobileLinks = document.querySelectorAll(".mobile-link");
-      const categoryContainer = document.getElementById("category-filters");
-      const galleryGrid = document.getElementById("gallery-grid");
+      const worksGrid = document.getElementById("works-grid");
+      const videoOverlay = document.getElementById("video-overlay");
+      const videoOverlayBackdrop = document.getElementById("video-overlay-backdrop");
+      const videoOverlayBack = document.getElementById("video-overlay-back");
+      const videoOverlayClose = document.getElementById("video-overlay-close");
+      const videoOverlayTitle = document.getElementById("video-overlay-title");
+      const videoOverlaySubtitle = document.getElementById("video-overlay-subtitle");
+      const videoGallery = document.getElementById("video-gallery");
+      const videoEmptyState = document.getElementById("video-empty-state");
+      const videoOverlayBody = document.querySelector(".video-overlay-body");
 
-      // --- Functions ---
-
-      // Render Category Buttons
-      function renderCategories() {
-        categoryContainer.innerHTML = categories
-          .map((cat) => {
-            const isActive = state.activeCategory === cat;
-            const activeClass =
-              "bg-yellow-500 text-neutral-900 shadow-lg border-yellow-500 font-bold";
-            const inactiveClass =
-              "bg-neutral-800 text-neutral-300 hover:bg-neutral-700 border-neutral-700";
-
-            return `
-                    <button 
-                        onclick="setCategory('${cat}')"
-                        class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
-                          isActive ? activeClass : inactiveClass
-                        }"
-                    >
-                        ${cat}
-                    </button>
-                `;
-          })
-          .join("");
+      function escapeHtml(text) {
+        const div = document.createElement("div");
+        div.textContent = text;
+        return div.innerHTML;
       }
 
-      // Render Gallery Items
-      function renderGallery() {
-        const filteredItems = portfolioItems.filter(
-          (item) => item.category === state.activeCategory
-        );
+      function getCategoryPreview(category) {
+        if (category.preview) return category.preview;
+        return null;
+      }
 
-        if (filteredItems.length === 0) {
-          galleryGrid.innerHTML = `
-                    <div class="col-span-full text-center py-20 text-neutral-500">
-                        <p>No images found in this category.</p>
-                    </div>
-                `;
-          return;
+      function renderWorksGrid() {
+        worksGrid.innerHTML = videoCategories
+          .map((category) => {
+            const preview = getCategoryPreview(category);
+            const previewHtml = preview
+              ? `<img src="${escapeHtml(preview)}" alt="" loading="lazy" />`
+              : `<div class="stack-card-placeholder" aria-hidden="true"></div>`;
+
+            return `
+              <button
+                type="button"
+                class="stack-card animate-fade-in-up"
+                data-category="${escapeHtml(category.id)}"
+                aria-label="Open ${escapeHtml(category.title)} videos"
+              >
+                <div class="stack-card-front">
+                  ${previewHtml}
+                  <div class="stack-card-label">
+                    <span class="block font-semibold text-white text-sm md:text-base leading-tight">${escapeHtml(category.title)}</span>
+                  </div>
+                </div>
+              </button>
+            `;
+          })
+          .join("");
+
+        worksGrid.querySelectorAll(".stack-card").forEach((card) => {
+          card.addEventListener("click", () => {
+            openVideoOverlay(card.dataset.category);
+          });
+        });
+      }
+
+      function renderVideoTile(item) {
+        const badge = platformLabels[item.platform] || item.platform;
+        const isPortrait = item.orientation === "portrait";
+        const tileClass = isPortrait
+          ? "video-tile video-tile-portrait"
+          : "video-tile video-tile-landscape";
+
+        if (item.embed && !item.externalOnly) {
+          return `
+            <div class="video-grid-item">
+              <div class="${tileClass}">
+                <span class="platform-badge">${escapeHtml(badge)}</span>
+                <iframe
+                  src="${escapeHtml(item.embed)}"
+                  title="${escapeHtml(item.title)}"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                  loading="lazy"
+                ></iframe>
+              </div>
+              <p class="text-sm text-neutral-400 mt-2 px-1 line-clamp-2">${escapeHtml(item.title)}</p>
+            </div>
+          `;
         }
 
-        state.currentImages = filteredItems;
-        
-        galleryGrid.innerHTML = filteredItems
-          .map((item, index) => {
-            // Determine classes for grid sizing
-            let gridClasses = "";
-            if (item.size === "wide") gridClasses += "md:col-span-2 ";
-            if (item.size === "tall") gridClasses += "row-span-2 aspect-[3/4] ";
-            if (!gridClasses) gridClasses = "aspect-[4/3] ";
+        const thumb =
+          item.thumbnail ||
+          (item.platform === "youtube" && item.url
+            ? `https://img.youtube.com/vi/${extractYouTubeId(item.url)}/hqdefault.jpg`
+            : null);
 
-            return `
-                    <div class="group relative overflow-hidden rounded-2xl cursor-pointer bg-neutral-800 ${gridClasses} animate-fade-in-up" onclick="openLightbox(${index})">
-                        <img 
-                            src="${item.src}" 
-                            alt="${item.title}" 
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            loading="lazy"
-                        />
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <span class="text-yellow-400 text-xs font-bold uppercase tracking-wider mb-1">${item.category}</span>
-                            <h3 class="text-white text-xl font-bold">${item.title}</h3>
-                        </div>
-                    </div>
-                `;
-          })
-          .join("");
+        const thumbHtml = thumb
+          ? `<img src="${escapeHtml(thumb)}" alt="" loading="lazy" />`
+          : `<div class="w-full h-full bg-neutral-800 flex items-center justify-center"><i data-lucide="play" class="w-10 h-10 text-yellow-500"></i></div>`;
+
+        const playIcon = thumb
+          ? `<i data-lucide="play" class="w-10 h-10 text-yellow-400 fill-yellow-400/20"></i>`
+          : `<i data-lucide="external-link" class="w-9 h-9 text-yellow-400"></i>`;
+
+        const externalHint =
+          item.platform === "youtube"
+            ? `<span class="video-tile-external-hint">ดูบน YouTube</span>`
+            : item.platform === "tiktok"
+              ? `<span class="video-tile-external-hint">ดูบน TikTok</span>`
+              : item.platform === "instagram"
+                ? `<span class="video-tile-external-hint">ดูบน Instagram</span>`
+                : item.platform === "facebook"
+                  ? `<span class="video-tile-external-hint">ดูบน Facebook</span>`
+                  : item.platform === "vimeo"
+                    ? `<span class="video-tile-external-hint">ดูบน Vimeo</span>`
+                    : `<span class="video-tile-external-hint">ดูช่องทางต้นฉบับ</span>`;
+
+        return `
+          <div class="video-grid-item">
+            <div class="${tileClass}">
+              <span class="platform-badge">${escapeHtml(badge)}</span>
+              <a
+                href="${escapeHtml(item.url)}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="video-tile-link"
+                aria-label="${escapeHtml(item.title)} — เปิดดูช่องทางต้นฉบับ"
+              >
+                <div class="video-tile-thumb">
+                  ${thumbHtml}
+                  <span class="video-tile-play">
+                    ${playIcon}
+                  </span>
+                  ${externalHint}
+                </div>
+              </a>
+            </div>
+            <p class="text-sm text-neutral-400 mt-2 px-1 line-clamp-2">${escapeHtml(item.title)}</p>
+          </div>
+        `;
       }
 
-      // Set Category Action
-      window.setCategory = (category) => {
-        state.activeCategory = category;
-        renderCategories();
-        renderGallery();
-      };
+      function renderVideoGallery(items) {
+        const landscapeItems = items.filter((item) => item.orientation !== "portrait");
+        const portraitItems = items.filter((item) => item.orientation === "portrait");
+        const sections = [];
 
-      // Lightbox Elements
-      const lightbox = document.getElementById("lightbox");
-      const lightboxImage = document.getElementById("lightboxImage");
-      const lightboxTitle = document.getElementById("lightboxTitle");
-      const lightboxCounter = document.getElementById("lightboxCounter");
-      const closeLightboxBtn = document.getElementById("closeLightbox");
-      const prevImageBtn = document.getElementById("prevImage");
-      const nextImageBtn = document.getElementById("nextImage");
+        if (landscapeItems.length > 0) {
+          sections.push(`
+            <section>
+              <p class="video-section-label">คลิปแนวนอน</p>
+              <div class="video-grid video-grid-landscape">
+                ${landscapeItems.map(renderVideoTile).join("")}
+              </div>
+            </section>
+          `);
+        }
 
-      // Lightbox Functions
-      window.openLightbox = function(index) {
-        state.currentImageIndex = index;
-        state.lightboxOpen = true;
-        updateLightboxImage();
-        lightbox.classList.remove("hidden");
+        if (portraitItems.length > 0) {
+          sections.push(`
+            <section>
+              <p class="video-section-label">คลิปแนวตั้ง</p>
+              <div class="video-grid video-grid-portrait">
+                ${portraitItems.map(renderVideoTile).join("")}
+              </div>
+            </section>
+          `);
+        }
+
+        return sections.join("");
+      }
+
+      function extractYouTubeId(url) {
+        try {
+          const parsed = new URL(url);
+          if (parsed.hostname.includes("youtu.be")) {
+            return parsed.pathname.slice(1);
+          }
+          return parsed.searchParams.get("v") || "";
+        } catch {
+          return "";
+        }
+      }
+
+      function openVideoOverlay(categoryId) {
+        const category = videoCategories.find((c) => c.id === categoryId);
+        if (!category) return;
+
+        state.activeCategoryId = categoryId;
+        videoOverlayTitle.textContent = category.title;
+        videoOverlaySubtitle.textContent = category.subtitle;
+
+        const items = videoItems.filter((item) => item.category === categoryId);
+
+        if (items.length === 0) {
+          videoGallery.innerHTML = "";
+          videoGallery.classList.add("hidden");
+          videoEmptyState.classList.remove("hidden");
+        } else {
+          videoGallery.classList.remove("hidden");
+          videoEmptyState.classList.add("hidden");
+          videoGallery.innerHTML = renderVideoGallery(items);
+        }
+
+        if (videoOverlayBody) {
+          videoOverlayBody.scrollTop = 0;
+        }
+
+        videoOverlay.classList.remove("hidden");
+        videoOverlay.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
-        lucide.createIcons(); // Re-initialize icons in lightbox
+        lucide.createIcons();
       }
 
-      function closeLightbox() {
-        state.lightboxOpen = false;
-        lightbox.classList.add("hidden");
-        document.body.style.overflow = "";
+      function closeVideoOverlay() {
+        state.activeCategoryId = null;
+        videoOverlay.classList.add("hidden");
+        videoOverlay.setAttribute("aria-hidden", "true");
+        videoGallery.innerHTML = "";
+        if (videoOverlayBody) {
+          videoOverlayBody.scrollTop = 0;
+        }
+        document.body.style.overflow = state.isMenuOpen ? "hidden" : "";
       }
 
-      function nextImage() {
-        state.currentImageIndex = (state.currentImageIndex + 1) % state.currentImages.length;
-        updateLightboxImage();
-      }
-
-      function prevImage() {
-        state.currentImageIndex = (state.currentImageIndex - 1 + state.currentImages.length) % state.currentImages.length;
-        updateLightboxImage();
-      }
-
-      function updateLightboxImage() {
-        const currentImage = state.currentImages[state.currentImageIndex];
-        lightboxImage.src = currentImage.src;
-        lightboxImage.alt = currentImage.title;
-        lightboxTitle.textContent = currentImage.title;
-        lightboxCounter.textContent = `${state.currentImageIndex + 1} / ${state.currentImages.length}`;
-      }
-
-      // Scroll Handler
       function handleScroll() {
         const isScrolled = window.scrollY > 50;
         if (isScrolled !== state.scrolled) {
@@ -693,57 +1092,41 @@
         }
       }
 
-      // Mobile Menu Toggles
       function toggleMenu() {
         state.isMenuOpen = !state.isMenuOpen;
         if (state.isMenuOpen) {
           mobileMenu.classList.remove("hidden");
-          document.body.style.overflow = "hidden"; // Prevent scrolling
+          document.body.style.overflow = "hidden";
         } else {
           mobileMenu.classList.add("hidden");
-          document.body.style.overflow = "";
+          if (!state.activeCategoryId) {
+            document.body.style.overflow = "";
+          }
         }
       }
 
-      // --- Event Listeners ---
+      renderWorksGrid();
 
       window.addEventListener("scroll", handleScroll);
       menuBtn.addEventListener("click", toggleMenu);
       closeMenuBtn.addEventListener("click", toggleMenu);
+      videoOverlayClose.addEventListener("click", closeVideoOverlay);
+      videoOverlayBack.addEventListener("click", closeVideoOverlay);
+      videoOverlayBackdrop.addEventListener("click", closeVideoOverlay);
 
-      // Close menu when clicking a link
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && state.activeCategoryId) {
+          closeVideoOverlay();
+        }
+      });
+
       mobileLinks.forEach((link) => {
         link.addEventListener("click", () => {
           if (state.isMenuOpen) toggleMenu();
         });
       });
 
-      // Lightbox Event Listeners
-      closeLightboxBtn.addEventListener("click", closeLightbox);
-      prevImageBtn.addEventListener("click", prevImage);
-      nextImageBtn.addEventListener("click", nextImage);
-      
-      // Close lightbox when clicking outside the image
-      lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) {
-          closeLightbox();
-        }
-      });
-
-      // Keyboard navigation for lightbox
-      document.addEventListener("keydown", (e) => {
-        if (state.lightboxOpen) {
-          if (e.key === "Escape") closeLightbox();
-          if (e.key === "ArrowRight") nextImage();
-          if (e.key === "ArrowLeft") prevImage();
-        }
-      });
-
-      // --- Initialization ---
-      renderCategories();
-      renderGallery();
-      handleScroll(); // Check initial scroll position
+      handleScroll();
     </script>
   </body>
 </html>
-
