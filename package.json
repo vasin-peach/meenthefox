@@ -12,6 +12,7 @@
     "media:audit": "python3 scripts/organize-media-names.py --audit",
     "media:compress": "bash scripts/compress-images.sh --replace media",
     "media:check": "python3 scripts/verify-media.py",
-    "push": "bash scripts/git-push.sh"
+    "push": "bash scripts/git-push.sh",
+    "web": "python3 -m http.server 8080 --directory public"
   }
 }
